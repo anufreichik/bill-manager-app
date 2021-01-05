@@ -13,7 +13,7 @@ function MemberForm(props) {
     return (
 
             <div>
-                <button type="button" className="btn btn-primary rounded-pill p-2" onClick={toggle}><FaPlus/><span className="p-2">New Member</span></button>
+                <button type="button" className="btn btn-outline-primary rounded-pill p-2" onClick={toggle}><FaPlus/><span className="p-2">New Member</span></button>
                 <Modal show={showModal} onHide={toggle} >
                     <Modal.Header closeButton>
                         <Modal.Title>Member</Modal.Title>

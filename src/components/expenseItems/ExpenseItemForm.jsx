@@ -16,10 +16,9 @@ function ExpenseItemForm(props) {
         setShowModal(false);
     }
 
-
     return (
         <div>
-            <button type="button" className="btn btn-primary rounded-pill p-2" onClick={toggle}>
+            <button type="button" className="btn btn-outline-primary rounded-pill p-2" onClick={toggle}>
                 <FaPlus/><span className="p-2">New Expense</span>
             </button>
             <Modal show={showModal} onHide={toggle}>

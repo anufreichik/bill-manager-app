@@ -5,7 +5,7 @@ import {v4 as uuidv4} from "uuid";
 
 function ExpenseItemsList(props) {
     const addExpense = ({expenseName, expenseAmount, tax, tip}) => {
-        const total = expenseAmount + expenseAmount*tax/100 + expenseAmount*tip/100;
+        const total = +((expenseAmount + expenseAmount*tax/100 + expenseAmount*tip/100).toFixed(2));
         const newExpense = {
             _id: uuidv4(),
             expenseName: expenseName,
@@ -20,7 +20,7 @@ function ExpenseItemsList(props) {
 
     return (
         <div>
-            <h5>Expense Items</h5>
+            <h6 className='text-muted mt-3'>Expense Items</h6>
             <ul className="list-group d-flex">
                 {props.expensesList && props.expensesList.filter(elem=>elem.partyId===props.partyId).map(el =>
                     <li key={el._id} className="list-group-item">

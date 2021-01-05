@@ -6,15 +6,18 @@ import {connect} from "react-redux";
 function TransactionForm(props) {
     const [showModal, setShowModal] = useState(false);
     const [transactionPurpose, setTransactionPurpose] = useState('');
-    const [transactionAmount, setTransactionAmount]=useState(0);
-    const [paidForMembers, setPaidForMembers]  = useState([]);
-    const [whoPaid, setWhoPaid]  = useState('');
+    const [transactionAmount, setTransactionAmount] = useState(0);
+    const [paidForMembers, setPaidForMembers] = useState([]);
+    const [whoPaid, setWhoPaid] = useState('');
+
+    const partyMembers = props.allMembersList.filter(el => el.partyId === props.partyId);
+    const partyExpenses = props.expensesList.filter(el => el.partyId === props.partyId);
 
     const toggle = () => setShowModal(!showModal);
 
     const handleSave = () => {
-        const members = paidForMembers.map(el=>el._id);
-        props.addTransaction({purpose:transactionPurpose, memberpaid:whoPaid, members, amount:transactionAmount });
+        const members = paidForMembers.map(el => el._id);
+        props.addTransaction({purpose: transactionPurpose, memberWhoPaid: whoPaid, members, amount: transactionAmount});
         setShowModal(false);
     }
 
@@ -22,19 +25,26 @@ function TransactionForm(props) {
         setWhoPaid(e.target.value);
     }
 
-    function handleCheckboxChange(member) {
-            const isSelected = paidForMembers.includes(member);
-            setPaidForMembers(
-                isSelected
-                    ? paidForMembers.filter(e => e !== member)
-                    : [...paidForMembers, member]
-            );
+    const handleCheckboxChange = (member) => {
+        const isSelected = paidForMembers.includes(member);
+        setPaidForMembers(
+            isSelected
+                ? paidForMembers.filter(e => e !== member)
+                : [...paidForMembers, member]
+        );
     }
-
+    const handleOnChangeExpenseItems = (e) => {
+        let amount=0
+        if(e.target.value)
+            amount = transactionAmount + ( props.expensesList.filter(el => el._id === e.target.value)[0].expenseTotal || 0);
+        else
+            amount = transactionAmount;
+        setTransactionAmount(amount);
+    }
     return (
 
         <div>
-            <button type="button" className="btn btn-primary rounded-pill p-2" onClick={toggle}>
+            <button type="button" className="btn btn-outline-primary rounded-pill p-2" onClick={toggle}>
                 <FaPlus/><span className="p-2">New Transaction</span>
             </button>
             <Modal show={showModal} onHide={toggle}>
@@ -51,11 +61,10 @@ function TransactionForm(props) {
                     <div className="col-auto">
                         <label htmlFor="paid">Who Paid</label>
                         <select className='form-control'
-                            id="paid" onChange={handleOnChangePaidSelect}>
+                                id="paid" onChange={handleOnChangePaidSelect}>
+                            <option value=''>Select Member Who Paid</option>
                             {
-                                props.allMembersList.filter(el =>
-                                    el.partyId === props.partyId
-                                ).map(elem =>
+                                partyMembers.map(elem =>
                                     <option key={elem._id} value={elem._id}>{elem.memberName}</option>
                                 )
 
@@ -68,21 +77,39 @@ function TransactionForm(props) {
                         <input type="text" className="form-control" id="amount" placeholder="Transaction Amount"
                                onChange={(e) => setTransactionAmount(+e.target.value)}/>
                     </div>
+                    {partyExpenses.length > 0 &&
+                    <>
+                        <div className="col-auto">
+                            OR
+                        </div>
+                        <div className="col-auto">
+                            {/*<label htmlFor="expenseItems">Select Expense Item</label>*/}
+                            <select className='form-control'
+                                    id="expenseItems" onChange={handleOnChangeExpenseItems}>
+                                <option value=''>Select Expense Item</option>
+                                {
+                                    partyExpenses.map(elem =>
+                                        <option key={elem._id}
+                                                value={elem._id}>{`${elem.expenseName} ($${elem.expenseTotal})`}</option>
+                                    )
+                                }
 
+                            </select>
+                        </div>
+                    </>
+                    }
                     <div className="col-auto">
                         <label htmlFor="paidfor">Paid For</label>
                         <ul>
                             {
-                                props.allMembersList.filter(el =>
-                                    el.partyId === props.partyId
-                                ).map(member =>
-                                    <li>
+                                partyMembers.map(member =>
+                                    <li key={member._id}>
                                         <input className='form-check-input'
                                                key={member._id}
                                                type="checkbox"
-                                               onChange={()=>handleCheckboxChange(member)}
+                                               onChange={() => handleCheckboxChange(member)}
                                                checked={paidForMembers.includes(member)}/>
-                                               {member.memberName}
+                                        {member.memberName}
                                     </li>
                                 )
                             }
@@ -103,7 +130,8 @@ function TransactionForm(props) {
 }
 
 const mapStateToProps = (state) => ({
-    allMembersList: state.members
+    allMembersList: state.members,
+    expensesList: state.expenses
 })
 const mapDispatchToProps = (dispatch) => ({})
 export default connect(mapStateToProps, mapDispatchToProps)(TransactionForm);

@@ -12,14 +12,14 @@ function MembersList(props) {
 
     return (
         <div >
-            <h6>Members</h6>
+            <h6 className='text-muted mt-3'>Members</h6>
             <ul className="list-group d-flex">
                 {props.membersList && props.membersList.filter(elem=>elem.partyId===props.partyId).map(el =>
                     <li key={el._id} className="list-group-item">
                         <div className="row">
                             <div className="col-3">{el.memberName}</div>
                             <div className="col-1 offset-8">
-                                <span className="badge badge-pill badge-dark ">{el.memberName[0].toUpperCase()}</span>
+                                <span className="badge badge-pill bg-secondary text-white ">{el.memberName[0].toUpperCase()}</span>
                             </div>
                         </div>
                     </li>

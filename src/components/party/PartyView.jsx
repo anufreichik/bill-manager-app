@@ -3,8 +3,9 @@ import {useParams, useLocation, useHistory, Link, Route, Switch, useRouteMatch} 
 import MembersList from "../members/MembersList";
 import TransactionsList from "../transactions/TransactionsList";
 import ExpenseItemsList from "../expenseItems/ExpenseItemsList";
+import {connect} from "react-redux";
 
-function PartyView() {
+function PartyView(props) {
     let {partyId} = useParams();
     let history = useHistory();
     let data = useLocation();
@@ -15,6 +16,9 @@ function PartyView() {
     const[showMembers, setShowMembers]=useState(false);
     const[showTransactions, setShowTransactions]=useState(false);
     const[showExpenses, setShowExpenses]=useState(false);
+
+    const partyMembers = props.allMembersList.filter(el => el.partyId === partyId);
+
 
     function handleGoBack(props) {
         history.push("/party");
@@ -43,9 +47,9 @@ function PartyView() {
                     <h6 className="card-subtitle mb-2 text-muted">{party.partyDate}</h6>
                     <p className="card-text">{party.description}</p>
                     <button className="btn btn-link shadow-none" onClick={handleMembersClick}>Members</button>
-                    <button className="btn btn-link shadow-none" onClick={handleTransactionsClick}>Transactions</button>
+                    {partyMembers.length>0 &&<button className="btn btn-link shadow-none" onClick={handleTransactionsClick}>Transactions</button>}
                     <button className="btn btn-link shadow-none" onClick={handleExpensesClick}>Expense Items</button>
-                    <button className="btn btn-link shadow-none" onClick={handleGoBack}>Back</button>
+                    <button className="btn btn-link shadow-none" onClick={handleGoBack}>Home</button>
                 </div>
             </div>
 
@@ -57,5 +61,8 @@ function PartyView() {
 
     );
 }
+const mapStateToProps = (state) => ({
+    allMembersList:state.members
+})
 
-export default PartyView;
+export default connect(mapStateToProps)(PartyView);
