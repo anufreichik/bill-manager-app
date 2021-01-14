@@ -44,7 +44,7 @@ function ExpenseItemsList(props) {
 }
 
 const mapStateToProps = (state) => ({
-    expensesList: state.expenses
+    expensesList: state.expenseReducer.expenses
 })
 const mapDispatchToProps = (dispatch) => ({
     addExpense:(newExpense)=>dispatch({type:'ADD_EXPENSE', payload: newExpense})

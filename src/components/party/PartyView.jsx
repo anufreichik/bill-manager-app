@@ -62,7 +62,7 @@ function PartyView(props) {
     );
 }
 const mapStateToProps = (state) => ({
-    allMembersList:state.members
+    allMembersList:state.memberReducer.members
 })
 
 export default connect(mapStateToProps)(PartyView);

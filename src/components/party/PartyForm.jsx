@@ -38,7 +38,7 @@ function PartyForm(props) {
                     </div>
                     <div className="col-auto">
                         <label htmlFor="name" >Notes</label>
-                        <input type="text" className="form-control" id="name" placeholder="Party Notes" onChange={(e)=>setDescription(e.target.value)}/>
+                        <input type="text" className="form-control" id="notes" placeholder="Party Notes" onChange={(e)=>setDescription(e.target.value)}/>
                     </div>
                     <div className="col-auto">
                         <label  className="mt-2">Party Date</label>

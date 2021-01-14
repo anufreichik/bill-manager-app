@@ -130,8 +130,8 @@ function TransactionForm(props) {
 }
 
 const mapStateToProps = (state) => ({
-    allMembersList: state.members,
-    expensesList: state.expenses
+    allMembersList: state.memberReducer.members,
+    expensesList: state.expenseReducer.expenses
 })
 const mapDispatchToProps = (dispatch) => ({})
 export default connect(mapStateToProps, mapDispatchToProps)(TransactionForm);

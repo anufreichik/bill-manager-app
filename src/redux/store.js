@@ -1,10 +1,10 @@
 import {createStore, applyMiddleware} from "redux";
-import partyManager from "./reducer";
 import {composeWithDevTools} from "redux-devtools-extension";
+import thunk from "redux-thunk";
+import allReducers from './CombinedReducers'
 
 const store = createStore(
-    partyManager,
-    composeWithDevTools(applyMiddleware())
+    allReducers,
+    composeWithDevTools(applyMiddleware(thunk))
 );
-
 export default store;

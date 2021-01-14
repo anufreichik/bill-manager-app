@@ -50,8 +50,8 @@ function TransactionsList(props) {
 }
 
 const mapStateToProps = (state) => ({
-    transactionsList: state.transactions,
-    allMembersList: state.members
+    transactionsList: state.transactionReducer.transactions,
+    allMembersList: state.memberReducer.members
 })
 const mapDispatchToProps = (dispatch) => ({
     addTransaction: (newTransaction) => dispatch({type: 'ADD_TRANSACTION', payload: newTransaction})

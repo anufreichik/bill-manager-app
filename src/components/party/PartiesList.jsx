@@ -1,16 +1,23 @@
-import React, {useState} from 'react';
-import {v4 as uuidv4} from 'uuid';
+import React, {useEffect, useState} from 'react';
 import PartyForm from "./PartyForm";
 import {Link, Route, Switch} from "react-router-dom";
 import {connect} from "react-redux";
+import {addParty, getParties} from "../../redux/actionsParty";
 
 
 function PartiesList(props) {
 
     const addParty = ({name, startDate, description}) => {
-        const newParty = {id: uuidv4(), partyName: name, partyDate: startDate, description: description}
+        console.log('add party')
+        const newParty = {partyName: name, partyDate: startDate, description: description}
         props.addParty(newParty);
     }
+
+    useEffect(
+        () => {
+           props.getParties();
+        }, []
+    )
 
     return (
 
@@ -42,10 +49,12 @@ function PartiesList(props) {
     );
 }
 const mapStateToProps = (state) => ({
-    partiesList: state.parties,
-    membersList:state.members
+    partiesList: state.partyReducer.parties,
+    membersList:state.memberReducer.members
 })
 const mapDispatchToProps = (dispatch) => ({
-    addParty:(newParty)=>dispatch({type:'ADD_PARTY', payload: newParty})
+    getParties: () => dispatch(getParties()),
+    //addParty:(newParty)=>dispatch({type:'ADD_PARTY', payload: newParty}),
+    addParty: (newParty) => dispatch(addParty(newParty))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(PartiesList);

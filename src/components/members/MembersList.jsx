@@ -1,15 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import MemberForm from "./MemberForm";
 import {connect} from "react-redux";
-import {v4 as uuidv4} from "uuid";
+import {addMember, getMembers} from "../../redux/actionsMember";
 
 function MembersList(props) {
 
     const addMember = ({name}) => {
-        const newMember = {_id: uuidv4(), memberName: name, partyId:props.partyId}
+        const newMember = { memberName: name, partyId:props.partyId}
         props.addMember(newMember);
     }
-
+    useEffect(
+        () => {
+            props.getMembers();
+        }, []
+    )
     return (
         <div >
             <h6 className='text-muted mt-3'>Members</h6>
@@ -34,9 +38,11 @@ function MembersList(props) {
 }
 
 const mapStateToProps = (state) => ({
-    membersList: state.members
+    membersList: state.memberReducer.members
 })
 const mapDispatchToProps = (dispatch) => ({
-    addMember:(newMember)=>dispatch({type:'ADD_MEMBER', payload: newMember})
+    //addMember:(newMember)=>dispatch({type:'ADD_MEMBER', payload: newMember})
+    getMembers: () => dispatch(getMembers()),
+    addMember:(newMember)=> dispatch(addMember(newMember)),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(MembersList);
