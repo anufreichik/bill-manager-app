@@ -1,9 +1,11 @@
 import axios from 'axios';
+import {authHeader} from "../helpers/authHeader";
 
 export function getMembers(){
     return (dispatch) => {
         axios({
             method: 'GET',
+            headers: authHeader(),
             url: `http://localhost:5000/member`
         })
             .then(
@@ -16,7 +18,14 @@ export function getMembers(){
 }
 export function addMember(member) {
     return (dispatch) => {
-        axios.post(`http://localhost:5000/member`, member)
+        //axios.post(`http://localhost:5000/member`, member)
+        axios({
+            method: 'POST',
+            headers: authHeader(),
+            url: `http://localhost:5000/member`,
+            data:member
+        })
+
             .then(
                 (res) => dispatch(getMembers())
             )

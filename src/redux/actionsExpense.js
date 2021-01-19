@@ -1,13 +1,11 @@
 import axios from 'axios';
-import {authHeader} from "../helpers/authHeader";
 
-export function getParties(){
+export function getExpenses(){
     console.log('action get party axios')
     return (dispatch) => {
         axios({
             method: 'GET',
-            headers: authHeader(),
-            url: `http://localhost:5000/party`,
+            url: `http://localhost:5000/expense`
         })
             .then(
                 (res) => dispatch({type:'GET_PARTIES', payload:res.data})
@@ -17,18 +15,17 @@ export function getParties(){
             )
     }
 }
-export function addParty(party) {
+export function addExpense(expense) {
     console.log('action add party axios')
     return (dispatch) => {
-        axios({
-            method:'POST',
-            headers: authHeader(),
-            url:`http://localhost:5000/party`,
-            data: party
-        })
-        //axios.post(`http://localhost:5000/party`, party)
+        // axios({
+        //     method:'POST',
+        //     url:`http://localhost:5000/party`,
+        //     data: party
+        // })
+        axios.post(`http://localhost:5000/expense`, expense)
             .then(
-                (res) => dispatch(getParties())
+                (res) => dispatch(getExpenses())
             )
             .catch(
                 (err) => console.log(err, 'error')

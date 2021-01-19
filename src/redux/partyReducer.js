@@ -1,18 +1,4 @@
-import {v4 as uuidv4} from "uuid";
-
 const initialState = {
-    // parties: [{
-    //     _id: uuidv4(),
-    //     partyName: 'Christmas Party',
-    //     partyDate: '12/14/20',
-    //     description: 'party at Valya place'
-    // },
-    //     {
-    //         _id: uuidv4(),
-    //         partyName: 'Engagement Party Katya',
-    //         partyDate: '11/19/20',
-    //         description: 'party at Katya place celebrate her ring'
-    //     },],
     parties:[],
 }
 
