@@ -4,6 +4,7 @@ import MembersList from "../members/MembersList";
 import TransactionsList from "../transactions/TransactionsList";
 import ExpenseItemsList from "../expenseItems/ExpenseItemsList";
 import {connect} from "react-redux";
+import moment from 'moment';
 
 function PartyView(props) {
     let {partyId} = useParams();
@@ -44,7 +45,7 @@ function PartyView(props) {
             <div className="card">
                 <div className="card-body card-header">
                     <h5 className="card-title">{party.partyName}</h5>
-                    <h6 className="card-subtitle mb-2 text-muted">{party.partyDate}</h6>
+                    <h6 className="card-subtitle mb-2 text-muted">{moment(party.partyDate).format('MM-DD-YYYY')}</h6>
                     <p className="card-text">{party.description}</p>
                     <button className="btn btn-link shadow-none" onClick={handleMembersClick}>Members</button>
                     {partyMembers.length>0 &&<button className="btn btn-link shadow-none" onClick={handleTransactionsClick}>Transactions</button>}

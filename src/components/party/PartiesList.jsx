@@ -3,7 +3,7 @@ import PartyForm from "./PartyForm";
 import {Link, Route, Switch} from "react-router-dom";
 import {connect} from "react-redux";
 import {addParty, getParties} from "../../redux/actionsParty";
-
+import moment from 'moment';
 
 function PartiesList(props) {
 
@@ -29,7 +29,7 @@ function PartiesList(props) {
                         <div className="row">
                             <div className="col-3"><Link
                                 to={{pathname: `/party/${el._id}`, state: {party: el}}}>{el.partyName}</Link></div>
-                            <div className="col-2"> {el.partyDate}</div>
+                            <div className="col-2"> {moment(el.partyDate).format('MM-DD-YYYY')}</div>
                             <div className="col-1 offset-6"><span
                                 className="badge bg-secondary rounded-circle text-white ml-1">{props.membersList.filter(m=>m.partyId===el._id).length}</span></div>
 
