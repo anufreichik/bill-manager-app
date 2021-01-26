@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import ExpenseItemForm from "./ExpenseItemForm";
 import {connect} from "react-redux";
-import {v4 as uuidv4} from "uuid";
 import {getExpenses, addExpense} from "../../redux/actionsExpense";
 
 function ExpenseItemsList(props) {
@@ -52,6 +51,6 @@ const mapStateToProps = (state) => ({
 })
 const mapDispatchToProps = (dispatch) => ({
     getExpenses:(partyId) => dispatch(getExpenses(partyId)),
-    addExpense:(newExpense)=>dispatch({type:'ADD_EXPENSE', payload: newExpense})
+    addExpense:(newExpense)=>dispatch(addExpense(newExpense))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(ExpenseItemsList);
