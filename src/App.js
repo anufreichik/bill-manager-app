@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Switch} from "react-router-dom";
 import {Route} from "react-router-dom";
@@ -12,7 +13,6 @@ function App() {
             <Switch>
                 <Route path="/login" component={LoginLayout}/>
                 <Route path="/"  component={GeneralLayout}/>
-
             </Switch>
         </div>
 

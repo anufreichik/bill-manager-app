@@ -1,13 +1,15 @@
 import React from 'react';
-import {Link, Route, Switch, Redirect} from "react-router-dom";
+import {Link, Route, Switch, Redirect, useHistory} from "react-router-dom";
 import PartiesList from "../party/PartiesList";
 import PartyView from "../party/PartyView";
 
 
 function GeneralLayout(props) {
+    let history = useHistory();
 
     if (! localStorage.getItem('user')) {
-        return <Redirect to="/login" />;
+        //return <Redirect to="/login" />;
+        history.push('/login');
     }
 
     return (
@@ -16,10 +18,13 @@ function GeneralLayout(props) {
             <div className="container-fluid">
 
                 <div className="row">
-                    <ul className="nav" >
-                        <li className="nav-item"><Link className='nav-link' to="/party">Parties</Link></li>
-                        <li className="nav-item"><Link className='nav-link' to="/settings">Settings</Link></li>
-                    </ul>
+                    <div className="col-12">
+                        <ul className="nav justify-content-start" >
+                            <li className="nav-item"><Link className='nav-link' to="/party">Parties</Link></li>
+                            <li className="nav-item"><Link className='nav-link' to="/settings">Settings</Link></li>
+                        </ul>
+                    </div>
+                </div>
 
                     <Switch>
                         <Route path='/party' exact >
@@ -34,9 +39,9 @@ function GeneralLayout(props) {
 
                     </Switch>
 
-                </div>
 
-                    <div className="mt-auto mb-15rem small container d-flex justify-content-around">
+
+                    <div className="footer fixed-bottom mb-2 small d-flex justify-content-around">
                         footer
                     </div>
 

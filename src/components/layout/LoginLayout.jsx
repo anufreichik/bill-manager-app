@@ -9,7 +9,7 @@ function LoginLayout(props) {
                 <div className="row">
                     <UserLogin/>
                 </div>
-                <div className="mt-auto mb-15rem small container d-flex justify-content-around">
+                <div className="footer fixed-bottom mb-2 small d-flex justify-content-around">
                     footer
                 </div>
             </div>

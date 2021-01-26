@@ -1,9 +1,13 @@
 import React, {useState} from 'react';
 import {connect} from "react-redux";
+import {useHistory} from "react-router-dom";
 import {userLogin} from "../../redux/actionsUser";
-import { withRouter } from "react-router-dom"
+
+//import { withRouter } from "react-router-dom"
 
 function UserLogin(props) {
+    let history = useHistory();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -13,19 +17,19 @@ function UserLogin(props) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        const userData = {email:email, password:password}
-        props.userLogin(userData, props.history);
+        const userData = {email: email, password: password}
+        props.userLogin(userData, history);
     }
 
     return (
-        <div className='container'>
+        <div className="container signin-container">
             <div className="row">
                 <div className="col"></div>
                 <div className="col-sm-12 col-md-7">
                     <div className="card">
                         <div className="card-block">
 
-                            <form className="sigin-form" onSubmit={handleSubmit}>
+                            <form onSubmit={handleSubmit} className="sigin-form mt-3">
                                 <div className="form-group">
                                     <input type="email" className="form-control" id="emailInput" placeholder="Email"
                                            value={email}
@@ -38,14 +42,10 @@ function UserLogin(props) {
                                            value={password}
                                            onChange={(e) => setPassword(e.target.value)}/>
                                 </div>
-                                <button className="btn btn-outline-primary btn-lg"  type="submit" disabled={!validateForm()}>Sign In
+                                <button className="btn signin-btn" type="submit" disabled={!validateForm()}>Login
                                 </button>
 
-                                <div className="form-check">
-                                    <label className="form-check-label">
-                                        <input className="form-check-input" type="checkbox"/> Remember me<a href="#"> Need Help?</a>
-                                    </label>
-                                </div>
+
                             </form>
                         </div>
                     </div>
@@ -57,10 +57,8 @@ function UserLogin(props) {
     )
 }
 
-const mapStateToProps = (state) => ({
-
-})
+const mapStateToProps = (state) => ({})
 const mapDispatchToProps = (dispatch) => ({
     userLogin: (user, history) => dispatch(userLogin(user, history))
 })
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UserLogin));
+export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);

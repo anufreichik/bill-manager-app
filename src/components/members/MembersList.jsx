@@ -11,14 +11,14 @@ function MembersList(props) {
     }
     useEffect(
         () => {
-            props.getMembers();
+            props.getMembers(props.partyId);
         }, []
     )
     return (
         <div >
             <h6 className='text-muted mt-3'>Members</h6>
             <ul className="list-group d-flex">
-                {props.membersList && props.membersList.filter(elem=>elem.partyId===props.partyId).map(el =>
+                {props.membersList && props.membersList.map(el =>
                     <li key={el._id} className="list-group-item">
                         <div className="row">
                             <div className="col-3">{el.memberName}</div>
@@ -42,7 +42,7 @@ const mapStateToProps = (state) => ({
 })
 const mapDispatchToProps = (dispatch) => ({
     //addMember:(newMember)=>dispatch({type:'ADD_MEMBER', payload: newMember})
-    getMembers: () => dispatch(getMembers()),
+    getMembers: (partyId) => dispatch(getMembers(partyId)),
     addMember:(newMember)=> dispatch(addMember(newMember)),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(MembersList);

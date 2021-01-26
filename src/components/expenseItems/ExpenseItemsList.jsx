@@ -1,13 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ExpenseItemForm from "./ExpenseItemForm";
 import {connect} from "react-redux";
 import {v4 as uuidv4} from "uuid";
+import {getExpenses, addExpense} from "../../redux/actionsExpense";
 
 function ExpenseItemsList(props) {
     const addExpense = ({expenseName, expenseAmount, tax, tip}) => {
         const total = +((expenseAmount + expenseAmount*tax/100 + expenseAmount*tip/100).toFixed(2));
         const newExpense = {
-            _id: uuidv4(),
             expenseName: expenseName,
             expenseAmount: expenseAmount,
             expenseTaxPercent: tax,
@@ -17,12 +17,16 @@ function ExpenseItemsList(props) {
         }
         props.addExpense(newExpense);
     }
-
+    useEffect(
+        () => {
+            props.getExpenses(props.partyId);
+        }, []
+    )
     return (
         <div>
             <h6 className='text-muted mt-3'>Expense Items</h6>
             <ul className="list-group d-flex">
-                {props.expensesList && props.expensesList.filter(elem=>elem.partyId===props.partyId).map(el =>
+                {props.expensesList && props.expensesList.map(el =>
                     <li key={el._id} className="list-group-item">
                         <div className="row">
                             <div className="col-3">{el.expenseName}</div>
@@ -47,6 +51,7 @@ const mapStateToProps = (state) => ({
     expensesList: state.expenseReducer.expenses
 })
 const mapDispatchToProps = (dispatch) => ({
+    getExpenses:(partyId) => dispatch(getExpenses(partyId)),
     addExpense:(newExpense)=>dispatch({type:'ADD_EXPENSE', payload: newExpense})
 })
 export default connect(mapStateToProps, mapDispatchToProps)(ExpenseItemsList);

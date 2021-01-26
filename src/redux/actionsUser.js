@@ -1,7 +1,7 @@
 import axios from 'axios';
-//import {history} from "../helpers/history";
 
 export function userLogin(user, history){
+
     return (dispatch) => {
         axios({
             method: 'POST',

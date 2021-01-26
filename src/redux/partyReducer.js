@@ -9,19 +9,19 @@ const partyReducer = (state = initialState, action) => {
                 ...state,
                 parties:action.payload
             }
-        case 'ADD_PARTY':
-            return {
-                ...state,
-                parties: [
-                    ...state.parties,
-                    action.payload
-                ]
-            }
-        case 'DELETE_PARTY':
-            return {
-                ...state,
-                cards: state.parties.filter(el => el._id !== action.payload)
-            }
+        // case 'ADD_PARTY':
+        //     return {
+        //         ...state,
+        //         parties: [
+        //             ...state.parties,
+        //             action.payload
+        //         ]
+        //     }
+        // case 'DELETE_PARTY':
+        //     return {
+        //         ...state,
+        //         cards: state.parties.filter(el => el._id !== action.payload)
+        //     }
 
         default:
             return state;

@@ -2,7 +2,6 @@ import axios from 'axios';
 import {authHeader} from "../helpers/authHeader";
 
 export function getParties(){
-    console.log('action get party axios')
     return (dispatch) => {
         axios({
             method: 'GET',
@@ -18,7 +17,6 @@ export function getParties(){
     }
 }
 export function addParty(party) {
-    console.log('action add party axios')
     return (dispatch) => {
         axios({
             method:'POST',

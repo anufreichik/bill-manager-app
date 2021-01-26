@@ -31,7 +31,7 @@ function PartiesList(props) {
                                 to={{pathname: `/party/${el._id}`, state: {party: el}}}>{el.partyName}</Link></div>
                             <div className="col-2"> {moment(el.partyDate).format('MM-DD-YYYY')}</div>
                             <div className="col-1 offset-6"><span
-                                className="badge bg-secondary rounded-circle text-white ml-1">{props.membersList.filter(m=>m.partyId===el._id).length}</span></div>
+                                className="badge bg-secondary rounded-circle text-white ml-1">{0}</span></div>
 
                         </div>
 
@@ -50,7 +50,6 @@ function PartiesList(props) {
 }
 const mapStateToProps = (state) => ({
     partiesList: state.partyReducer.parties,
-    membersList:state.memberReducer.members
 })
 const mapDispatchToProps = (dispatch) => ({
     getParties: () => dispatch(getParties()),

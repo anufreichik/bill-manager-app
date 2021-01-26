@@ -55,7 +55,7 @@ function PartyView(props) {
             </div>
 
             {showMembers &&   <MembersList partyId={party._id}/>}
-            {showTransactions &&   <TransactionsList partyId={party._id}/>}
+            {showTransactions && <TransactionsList partyId={party._id}/>}
             {showExpenses &&   <ExpenseItemsList partyId={party._id}/>}
         </div>
 
