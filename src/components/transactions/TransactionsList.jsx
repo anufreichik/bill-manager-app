@@ -38,11 +38,10 @@ function TransactionsList(props) {
                                 </div>
                             <div className="col-3">
                                 {
-                                     // props.membersList
-                                     //    .filter(elem =>el.paidForMembers.includes(elem._id))
-                                     //    .map(m =>
-                                     //        <span className="mr-2 badge badge-pill bg-secondary text-white">{m.memberName[0].toUpperCase()}</span>
-                                     //    )
+                                    el.paidForMembers
+                                        .map(m =>
+                                            <span className="mr-2 badge badge-pill bg-secondary text-white">{m.memberName[0].toUpperCase()}</span>
+                                        )
                                 }
                             </div>
                         </div>
