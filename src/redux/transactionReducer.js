@@ -2,13 +2,10 @@ const initialTransactions = { transactions:[],}
 
 const transactionReducer = (state=initialTransactions, action) => {
     switch (action.type) {
-        case 'ADD_TRANSACTION':
+        case 'GET_TRANSACTIONS':
             return {
                 ...state,
-                transactions: [
-                    ...state.transactions,
-                    action.payload
-                ]
+                transactions:action.payload
             }
         default:
             return state;

@@ -8,14 +8,6 @@ const expenseReducer = (state=initialExpenses, action) => {
                 ...state,
                 expenses:action.payload
             }
-        case 'ADD_EXPENSE':
-            return {
-                ...state,
-                expenses: [
-                    ...state.expenses,
-                    action.payload
-                ]
-            }
         default:
             return state;
     }

@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {FaPlus} from "react-icons/all";
 import {Button, Modal} from "react-bootstrap";
 import {connect} from "react-redux";
+import {getExpenses} from "../../redux/actionsExpense";
 
 function TransactionForm(props) {
     const [showModal, setShowModal] = useState(false);
@@ -10,14 +11,14 @@ function TransactionForm(props) {
     const [paidForMembers, setPaidForMembers] = useState([]);
     const [whoPaid, setWhoPaid] = useState('');
 
-    const partyMembers = props.allMembersList.filter(el => el.partyId === props.partyId);
-    const partyExpenses = props.expensesList.filter(el => el.partyId === props.partyId);
+    const partyMembers = props.membersList;
+    const partyExpenses = props.expensesList;
 
     const toggle = () => setShowModal(!showModal);
 
     const handleSave = () => {
         const members = paidForMembers.map(el => el._id);
-        props.addTransaction({purpose: transactionPurpose, memberWhoPaid: whoPaid, members, amount: transactionAmount});
+        props.addTransaction({partyId:props.partyId, purpose: transactionPurpose, memberWhoPaid: whoPaid, members, amount: transactionAmount});
         setShowModal(false);
     }
 
@@ -41,6 +42,13 @@ function TransactionForm(props) {
             amount = transactionAmount;
         setTransactionAmount(amount);
     }
+
+    useEffect(
+        () => {
+            props.getExpenses(props.partyId);
+        }, []
+    )
+
     return (
 
         <div>
@@ -130,8 +138,10 @@ function TransactionForm(props) {
 }
 
 const mapStateToProps = (state) => ({
-    allMembersList: state.memberReducer.members,
+    membersList: state.memberReducer.members,
     expensesList: state.expenseReducer.expenses
 })
-const mapDispatchToProps = (dispatch) => ({})
+const mapDispatchToProps = (dispatch) => ({
+    getExpenses:(partyId) => dispatch(getExpenses(partyId)),
+})
 export default connect(mapStateToProps, mapDispatchToProps)(TransactionForm);

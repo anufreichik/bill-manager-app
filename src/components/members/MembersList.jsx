@@ -11,7 +11,7 @@ function MembersList(props) {
     }
     useEffect(
         () => {
-            props.getMembers(props.partyId);
+           //props.getMembers(props.partyId);
         }, []
     )
     return (
@@ -42,7 +42,7 @@ const mapStateToProps = (state) => ({
 })
 const mapDispatchToProps = (dispatch) => ({
     //addMember:(newMember)=>dispatch({type:'ADD_MEMBER', payload: newMember})
-    getMembers: (partyId) => dispatch(getMembers(partyId)),
+    //getMembers: (partyId) => dispatch(getMembers(partyId)),
     addMember:(newMember)=> dispatch(addMember(newMember)),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(MembersList);

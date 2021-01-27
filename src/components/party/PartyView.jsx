@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useParams, useLocation, useHistory, Link, Route, Switch, useRouteMatch} from "react-router-dom";
 import MembersList from "../members/MembersList";
 import TransactionsList from "../transactions/TransactionsList";
 import ExpenseItemsList from "../expenseItems/ExpenseItemsList";
 import {connect} from "react-redux";
 import moment from 'moment';
+import { getMembers} from "../../redux/actionsMember";
 
 function PartyView(props) {
     let {partyId} = useParams();
@@ -12,13 +13,12 @@ function PartyView(props) {
     let data = useLocation();
     let party = data.state.party;
     let match = useRouteMatch();
-    //console.log(data.state)
 
     const[showMembers, setShowMembers]=useState(false);
     const[showTransactions, setShowTransactions]=useState(false);
     const[showExpenses, setShowExpenses]=useState(false);
 
-    const partyMembers = props.allMembersList.filter(el => el.partyId === partyId);
+    const partyMembers = props.membersList;
 
 
     function handleGoBack(props) {
@@ -40,6 +40,14 @@ function PartyView(props) {
         setShowTransactions(false);
         setShowExpenses(true);
     }
+
+    useEffect(
+        () => {
+            props.getMembers(party._id);
+        }, []
+    )
+
+
     return (
         <div className="container">
             <div className="card">
@@ -63,7 +71,9 @@ function PartyView(props) {
     );
 }
 const mapStateToProps = (state) => ({
-    allMembersList:state.memberReducer.members
+    membersList:state.memberReducer.members
 })
-
-export default connect(mapStateToProps)(PartyView);
+const mapDispatchToProps = (dispatch) => ({
+    getMembers: (partyId) => dispatch(getMembers(partyId)),
+})
+export default connect(mapStateToProps, mapDispatchToProps)(PartyView);
