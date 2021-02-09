@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import ExpenseItemForm from "./ExpenseItemForm";
 import {connect} from "react-redux";
-import {getExpenses, addExpense} from "../../redux/actionsExpense";
+import {getExpenses, addExpense} from "../../redux/expenseActions";
 
 function ExpenseItemsList(props) {
     const addExpense = ({expenseName, expenseAmount, tax, tip}) => {

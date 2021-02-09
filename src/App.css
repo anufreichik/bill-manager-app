@@ -30,7 +30,9 @@ a.create-new-account {
 }
 
 
-
+.bg-nav-custom{
+  background-color: #cbbdc9;
+}
 
 @keyframes App-logo-spin {
   from {

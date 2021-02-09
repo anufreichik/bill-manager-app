@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {FaPlus} from "react-icons/all";
 import {Button, Modal} from "react-bootstrap";
 import {connect} from "react-redux";
-import {getExpenses} from "../../redux/actionsExpense";
+import {getExpenses} from "../../redux/expenseActions";
 
 function TransactionForm(props) {
     const [showModal, setShowModal] = useState(false);
@@ -91,7 +91,7 @@ function TransactionForm(props) {
                             OR
                         </div>
                         <div className="col-auto">
-                            {/*<label htmlFor="expenseItems">Select Expense Item</label>*/}
+                            {/*<label htmlFor="expenses">Select Expense Item</label>*/}
                             <select className='form-control'
                                     id="expenseItems" onChange={handleOnChangeExpenseItems}>
                                 <option value=''>Select Expense Item</option>

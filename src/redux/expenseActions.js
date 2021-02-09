@@ -14,7 +14,13 @@ export function getExpenses(partyId){
                 (res) => dispatch({type:'GET_EXPENSES', payload:res.data})
             )
             .catch(
-                (err) => console.log(err, 'error')
+                (err) => {
+                    if (err.response.status === 401) {
+                        console.log('unauthorized, logging out ...');
+                        dispatch({type:'AUTH_FAIL', payload:null});
+                    }
+
+                }
             )
     }
 }
@@ -32,7 +38,13 @@ export function addExpense(expense) {
                 (res) => dispatch(getExpenses(expense.partyId))
             )
             .catch(
-                (err) => console.log(err, 'error')
+                (err) => {
+                    if (err.response.status === 401) {
+                        console.log('unauthorized, logging out ...');
+                        dispatch({type:'AUTH_FAIL', payload:null});
+                    }
+
+                }
             )
     }
 }

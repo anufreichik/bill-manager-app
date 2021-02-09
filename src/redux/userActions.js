@@ -15,7 +15,7 @@ export function userLogin(user, history){
                     if (res.data.user) {
                         // store user details and jwt token in local storage to keep user logged in between page refreshes
                         localStorage.setItem('user', JSON.stringify(res.data.user));
-                        dispatch({type:'SET_USER', payload:res.data});
+                        dispatch({type:'LOGIN_SUCCESS', payload:res.data});
                         history.push('/');
                     }
 
@@ -24,6 +24,7 @@ export function userLogin(user, history){
             .catch(
                 (err) => {
                     console.log(err, 'error');
+                    dispatch({type:'AUTH_FAIL', payload:null});
                     history.push('/login');
                 }
 

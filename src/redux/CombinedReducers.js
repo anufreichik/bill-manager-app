@@ -4,6 +4,7 @@ import memberReducer from "./memberReducer";
 import expenseReducer from "./expenseReducer";
 import transactionReducer from "./transactionReducer";
 import userReducer from "./userReducer";
+import authReducer from "./authReducer";
 
 export default combineReducers({
     partyReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
     expenseReducer,
     transactionReducer,
     userReducer,
+    authReducer,
 })

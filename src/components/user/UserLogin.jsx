@@ -1,10 +1,7 @@
 import React, {useState} from 'react';
 import {connect} from "react-redux";
 import {useHistory} from "react-router-dom";
-import {userLogin} from "../../redux/actionsUser";
-
-//import { withRouter } from "react-router-dom"
-
+import {userLogin} from "../../redux/userActions";
 function UserLogin(props) {
     let history = useHistory();
 

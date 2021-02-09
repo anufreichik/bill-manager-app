@@ -9,10 +9,19 @@ export function getParties(){
             url: `http://localhost:5000/party`,
         })
             .then(
-                (res) => dispatch({type:'GET_PARTIES', payload:res.data})
+                (res) => {
+                    dispatch({type: 'GET_PARTIES', payload: res.data})
+
+                }
             )
             .catch(
-                (err) => console.log(err, 'error')
+                (err) => {
+                    if (err.response.status === 401) {
+                        console.log('unauthorized, logging out ...');
+                        dispatch({type:'AUTH_FAIL', payload:null});
+                    }
+
+                }
             )
     }
 }
@@ -29,7 +38,13 @@ export function addParty(party) {
                 (res) => dispatch(getParties())
             )
             .catch(
-                (err) => console.log(err, 'error')
+                (err) => {
+                    if (err.response.status === 401) {
+                        console.log('unauthorized, logging out ...');
+                        dispatch({type:'AUTH_FAIL', payload:null});
+                    }
+
+                }
             )
     }
 }

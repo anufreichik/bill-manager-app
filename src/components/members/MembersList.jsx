@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import MemberForm from "./MemberForm";
 import {connect} from "react-redux";
-import {addMember, getMembers} from "../../redux/actionsMember";
+import {addMember, getMembers} from "../../redux/memberActions";
 
 function MembersList(props) {
 

@@ -13,7 +13,13 @@ export function getMembers(partyId){
                 (res) => dispatch({type:'GET_MEMBERS', payload:res.data})
             )
             .catch(
-                (err) => console.log(err, 'error')
+                (err) => {
+                    if (err.response.status === 401) {
+                        console.log('unauthorized, logging out ...');
+                        dispatch({type:'AUTH_FAIL', payload:null});
+                    }
+
+                }
             )
     }
 }
@@ -31,7 +37,13 @@ export function addMember(member) {
                 (res) => dispatch(getMembers(member.partyId))
             )
             .catch(
-                (err) => console.log(err, 'error')
+                (err) => {
+                    if (err.response.status === 401) {
+                        console.log('unauthorized, logging out ...');
+                        dispatch({type:'AUTH_FAIL', payload:null});
+                    }
+
+                }
             )
     }
 }

@@ -5,7 +5,7 @@ const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'SET_USER':
 
-            let loggedUser = {email:action.payload.user.email, userId:action.payload.user.userId, loggedIn:true}
+            let loggedUser = {email:action.payload.user.email, userId:action.payload.user.userId}
             return {
                 ...state,
                 user:loggedUser
