@@ -48,3 +48,53 @@ export function addExpense(expense) {
             )
     }
 }
+
+export function expenseGetById(expenseId) {
+    return (dispatch) => {
+        axios({
+            method: 'GET',
+            headers: authHeader(),
+            url: `http://localhost:5000/expense/${expenseId}`
+        })
+
+            .then(
+                (res) => {
+                    return dispatch({type:'SET_EXPENSE_INFO', payload:res.data})
+                }
+            )
+            .catch(
+                (err) => {
+                    if (err.response.status === 401) {
+                        console.log('unauthorized, logging out ...');
+                        dispatch({type:'AUTH_FAIL', payload:null});
+                    }
+
+                }
+            )
+    }
+}
+
+
+export function updateExpenseById(expense) {
+    return (dispatch) => {
+        axios({
+            method: 'PATCH',
+            headers: authHeader(),
+            url: `http://localhost:5000/expense/${expense._id}`,
+            data:expense
+        })
+
+            .then(
+                (res) => dispatch(getExpenses(expense.partyId))
+            )
+            .catch(
+                (err) => {
+                    if (err.response.status === 401) {
+                        console.log('unauthorized, logging out ...');
+                        dispatch({type:'AUTH_FAIL', payload:null});
+                    }
+
+                }
+            )
+    }
+}

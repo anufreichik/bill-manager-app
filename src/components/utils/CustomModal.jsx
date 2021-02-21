@@ -8,6 +8,8 @@ import PartyFormWrapperAdd from "../party/PartyFormWrapperAdd";
 import PartyFormWrapperEdit from "../party/PartyFormWrapperEdit";
 import TransactionFormWrapperAdd from "../transactions/TransactionFormWrapperAdd";
 import TransactionFormWrapperEdit from "../transactions/TransactionFormWrapperEdit";
+import ExpenseFormWrapperAdd from "../expenses/ExpenseFormWrapperAdd";
+import ExpenseFormWrapperEdit from "../expenses/ExpenseFormWrapperEdit";
 
 const CustomModal = (props) => {
 
@@ -23,6 +25,8 @@ const CustomModal = (props) => {
         AddParty: <PartyFormWrapperAdd/>,
         AddTransaction:<TransactionFormWrapperAdd/>,
         EditTransaction:<TransactionFormWrapperEdit/>,
+        AddExpense:<ExpenseFormWrapperAdd/>,
+        EditExpense:<ExpenseFormWrapperEdit/>,
     }
     const onCloseModal = () => {
         props.close();

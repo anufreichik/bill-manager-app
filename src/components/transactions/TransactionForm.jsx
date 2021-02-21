@@ -142,9 +142,10 @@ function TransactionForm(props) {
                         </ul>
                     </div>
 
-
-                    <Button variant="secondary" onClick={handleCancel}>Cancel</Button>
+            <div className="col-auto mt-2 float-right">
+                    <Button variant="secondary" className="mr-2" onClick={handleCancel}>Cancel</Button>
                     <Button variant="primary" onClick={handleSave}>{props.submitButtonText}</Button>
+            </div>
 
 
 

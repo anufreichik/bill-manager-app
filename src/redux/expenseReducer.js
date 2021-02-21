@@ -1,4 +1,7 @@
-const initialExpenses = { expenses:[],}
+const initialExpenses = {
+    expenses:[],
+    expenseInfo:{}
+}
 
 const expenseReducer = (state=initialExpenses, action) => {
     switch (action.type) {
@@ -7,6 +10,11 @@ const expenseReducer = (state=initialExpenses, action) => {
             return {
                 ...state,
                 expenses:action.payload
+            }
+        case 'SET_EXPENSE_INFO':
+            return{
+                ...state,
+                expenseInfo: action.payload
             }
         default:
             return state;
