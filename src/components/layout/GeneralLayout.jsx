@@ -3,6 +3,7 @@ import {Link, Route, Switch, useRouteMatch} from "react-router-dom";
 import PartiesList from "../party/PartiesList";
 import PartyView from "../party/PartyView";
 import {connect} from "react-redux";
+import CustomModal from "../utils/CustomModal";
 
 
 function GeneralLayout(props) {
@@ -14,7 +15,7 @@ function GeneralLayout(props) {
                 <div className="container-fluid">
 
                     <div className="collapse navbar-collapse" >
-                        <h5 className=" pt-3 pb-2 navbar-brand text-muted">Group Bill Manager</h5>
+                        <h5 className="pt-3 pb-2 navbar-brand title-custom"  >Group Bill Manager</h5>
                         <div className='container-fluid d-flex justify-content-between'>
                             <ul className="nav">
                                 <li className="nav-item">
@@ -35,7 +36,7 @@ function GeneralLayout(props) {
                 </div>
 
             </nav>
-
+            <CustomModal />
             <div className="container-fluid">
 
                     <Switch>

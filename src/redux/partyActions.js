@@ -48,3 +48,55 @@ export function addParty(party) {
             )
     }
 }
+
+
+export function partyGetById(partyId) {
+    return (dispatch) => {
+        axios({
+            method: 'GET',
+            headers: authHeader(),
+            url: `http://localhost:5000/party/${partyId}`
+        })
+
+            .then(
+                (res) => {
+                    return dispatch({type:'SET_PARTY_INFO', payload:res.data})
+                }
+            )
+            .catch(
+                (err) => {
+                    if (err.response.status === 401) {
+                        console.log('unauthorized, logging out ...');
+                        dispatch({type:'AUTH_FAIL', payload:null});
+                    }
+
+                }
+            )
+    }
+}
+
+
+export function updatePartyById(party) {
+    return (dispatch) => {
+        axios({
+            method: 'PATCH',
+            headers: authHeader(),
+            url: `http://localhost:5000/party/${party._id}`,
+            data:party
+        })
+
+            .then(
+                (res) => dispatch(getParties(party.partyId))
+            )
+            .catch(
+                (err) => {
+                    if (err.response.status === 401) {
+                        console.log('unauthorized, logging out ...');
+                        dispatch({type:'AUTH_FAIL', payload:null});
+                    }
+
+                }
+            )
+    }
+}
+

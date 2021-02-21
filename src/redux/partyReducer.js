@@ -1,5 +1,6 @@
 const initialState = {
     parties:[],
+    partyInfo:{}
 }
 
 const partyReducer = (state = initialState, action) => {
@@ -8,6 +9,11 @@ const partyReducer = (state = initialState, action) => {
             return {
                 ...state,
                 parties:action.payload
+            }
+        case 'SET_PARTY_INFO':
+            return {
+                ...state,
+                partyInfo:{...action.payload}
             }
         // case 'ADD_PARTY':
         //     return {

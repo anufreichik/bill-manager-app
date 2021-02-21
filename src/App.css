@@ -31,9 +31,11 @@ a.create-new-account {
 
 
 .bg-nav-custom{
-  background-color: #cbbdc9;
+  background-color: #d8e2e9;
 }
-
+.title-custom{
+  color: #d40a74;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

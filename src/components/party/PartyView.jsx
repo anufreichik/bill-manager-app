@@ -60,7 +60,7 @@ function PartyView(props) {
 
 
     return (
-        <div className="container">
+        <div className="container mt-3">
             <div className="card">
                 <div className="card-body card-header">
                     <h5 className="card-title">{party.partyName}</h5>

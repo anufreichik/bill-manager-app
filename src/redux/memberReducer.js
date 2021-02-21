@@ -1,4 +1,7 @@
-const initialMembers = {members: [],}
+const initialMembers = {
+    members: [],
+    memberInfo:{}
+}
 
 const memberReducer = (state=initialMembers, action) => {
     switch (action.type) {
@@ -11,6 +14,12 @@ const memberReducer = (state=initialMembers, action) => {
             return {
                 ...state,
                 members: [...state.members, action.payload]
+            }
+
+        case 'SET_MEMBER_INFO':
+            return {
+                ...state,
+                memberInfo:{...action.payload}
             }
         default:
             return state;

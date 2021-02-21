@@ -47,3 +47,53 @@ export function addMember(member) {
             )
     }
 }
+
+//memberGetById
+export function memberGetById(memberId) {
+    return (dispatch) => {
+        axios({
+            method: 'GET',
+            headers: authHeader(),
+            url: `http://localhost:5000/member/${memberId}`
+        })
+
+            .then(
+                (res) => {
+                   return dispatch({type:'SET_MEMBER_INFO', payload:res.data})
+                }
+            )
+            .catch(
+                (err) => {
+                    if (err.response.status === 401) {
+                        console.log('unauthorized, logging out ...');
+                        dispatch({type:'AUTH_FAIL', payload:null});
+                    }
+
+                }
+            )
+    }
+}
+
+export function updateMemberById(member) {
+    return (dispatch) => {
+        axios({
+            method: 'PATCH',
+            headers: authHeader(),
+            url: `http://localhost:5000/member/${member._id}`,
+            data:member
+        })
+
+            .then(
+                (res) => dispatch(getMembers(member.partyId))
+            )
+            .catch(
+                (err) => {
+                    if (err.response.status === 401) {
+                        console.log('unauthorized, logging out ...');
+                        dispatch({type:'AUTH_FAIL', payload:null});
+                    }
+
+                }
+            )
+    }
+}

@@ -6,7 +6,7 @@ import {Route} from "react-router-dom";
 import LoginLayout from "./components/layout/LoginLayout";
 import GeneralLayout from "./components/layout/GeneralLayout";
 import ProtectedRoute from "./components/layout/ProtectedRoute";
-import {connect} from "react-redux";
+
 
 
 function App() {
