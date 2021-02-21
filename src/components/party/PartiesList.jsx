@@ -19,7 +19,7 @@ function PartiesList(props) {
         props.partyGetById(id);
 
         props.open({
-            title: 'Edit Member',
+            title: 'Edit Party',
             component: 'EditParty',
             width: '200',
         });
@@ -43,16 +43,16 @@ function PartiesList(props) {
                     color="primary"
                     startIcon={<GroupAdd />}
                     onClick={handleAddOnClick}>
-                    New Party
+                    Create New Party
                 </Button>
 
             </div>
             <ul className="list-group d-flex">
                 {props.partiesList.map(el =>
-                    <li key={Math.random()} className="list-group-item">
+                    <li key={el._id} className="list-group-item">
                         <div className="row">
-                            <div className="col-3"><Link
-                                to={{pathname: `${match.path}/${el._id}`, state: {party: el}}}>{el.partyName}</Link></div>
+                            <div className="col-3">
+                                <Link to={{pathname: `${match.path}/${el._id}`, state: {party: el}}}>{el.partyName}</Link></div>
                             <div className="col-2"> {moment(el.partyDate).format('MM-DD-YYYY')}</div>
                             <div className="col-1 offset-4"><span
                                 className="badge bg-secondary rounded-circle text-white ml-1">{0}</span></div>

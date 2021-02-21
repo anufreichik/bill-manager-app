@@ -19,7 +19,7 @@ function GeneralLayout(props) {
                         <div className='container-fluid d-flex justify-content-between'>
                             <ul className="nav">
                                 <li className="nav-item">
-                                    <Link className='nav-link' to={`${match.path}/party`}>Parties</Link>
+                                    <Link className='nav-link' to={`${match.path}/party`}>My Parties</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link className='nav-link' to={`${match.path}/settings`}>Settings</Link>

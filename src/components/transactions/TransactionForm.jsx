@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {FaPlus} from "react-icons/all";
 import {Button, Modal} from "react-bootstrap";
 import {connect} from "react-redux";
 import {getExpenses} from "../../redux/expenseActions";
+import {get} from "lodash";
+import {useParams} from "react-router-dom";
 
 function TransactionForm(props) {
-    const [showModal, setShowModal] = useState(false);
     const [transactionPurpose, setTransactionPurpose] = useState('');
     const [transactionAmount, setTransactionAmount] = useState(0);
     const [paidForMembers, setPaidForMembers] = useState([]);
@@ -14,25 +14,31 @@ function TransactionForm(props) {
     const partyMembers = props.membersList;
     const partyExpenses = props.expensesList;
 
-    const toggle = () => setShowModal(!showModal);
+
 
     const handleSave = () => {
-        const members = paidForMembers.map(el => el._id);
-        props.addTransaction({partyId:props.partyId, purpose: transactionPurpose, memberWhoPaid: whoPaid, members, amount: transactionAmount});
-        setShowModal(false);
-    }
+        props.onFinish({
+            purpose: transactionPurpose,
+            memberWhoPaid: whoPaid,
+            paidForMembers:paidForMembers,
+            amount: transactionAmount,
+        });
 
+        props.onClose();
+
+    }
+    const handleCancel=()=>{
+        props.onClose();
+    }
     const handleOnChangePaidSelect = (e) => {
         setWhoPaid(e.target.value);
     }
 
     const handleCheckboxChange = (member) => {
-        const isSelected = paidForMembers.includes(member);
-        setPaidForMembers(
-            isSelected
-                ? paidForMembers.filter(e => e !== member)
-                : [...paidForMembers, member]
-        );
+        const isSelected = paidForMembers.includes(member._id);
+        const updatedListPaidForMembers = isSelected ? paidForMembers.filter(el => el !== member._id): [...paidForMembers, member._id];
+        setPaidForMembers(updatedListPaidForMembers);
+
     }
     const handleOnChangeExpenseItems = (e) => {
         let amount=0
@@ -45,32 +51,41 @@ function TransactionForm(props) {
 
     useEffect(
         () => {
-            props.getExpenses(props.partyId);
+            props.getExpenses(props.partyInfo._id);
         }, []
     )
+
+    useEffect(()=>{
+        if(props.initialValues){
+            const purpose = get(props, 'initialValues.purpose', '');
+            const amount = get(props, 'initialValues.amount', 0);
+            const memberWhoPaid = get(props, 'initialValues.memberWhoPaid._id', '');
+            const paidForMembersList=get(props, 'initialValues.paidForMembers', []);
+
+            setTransactionPurpose(purpose);
+            setTransactionAmount(amount);
+            setWhoPaid(memberWhoPaid);
+            setPaidForMembers(paidForMembersList);
+        }
+
+    },[props.initialValues])
 
     return (
 
         <div>
-            <button type="button" className="btn btn-outline-primary rounded-pill p-2" onClick={toggle}>
-                <FaPlus/><span className="p-2">New Transaction</span>
-            </button>
-            <Modal show={showModal} onHide={toggle}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Transaction</Modal.Title>
-                </Modal.Header>
 
-                <Modal.Body>
                     <div className="col-auto">
                         <label htmlFor="purpose">Purpose</label>
                         <input type="text" className="form-control" id="purpose" placeholder="Transaction Purpose"
+                               value={transactionPurpose}
                                onChange={(e) => setTransactionPurpose(e.target.value)}/>
                     </div>
+
                     <div className="col-auto">
                         <label htmlFor="paid">Who Paid</label>
-                        <select className='form-control'
+                        <select className='form-control' value={whoPaid}
                                 id="paid" onChange={handleOnChangePaidSelect}>
-                            <option value=''>Select Member Who Paid</option>
+                            <option value={''}>Select Member Who Paid</option>
                             {
                                 partyMembers.map(elem =>
                                     <option key={elem._id} value={elem._id}>{elem.memberName}</option>
@@ -80,9 +95,11 @@ function TransactionForm(props) {
 
                         </select>
                     </div>
+
                     <div className="col-auto">
                         <label htmlFor="amount">Amount</label>
                         <input type="text" className="form-control" id="amount" placeholder="Transaction Amount"
+                               value={transactionAmount}
                                onChange={(e) => setTransactionAmount(+e.target.value)}/>
                     </div>
                     {partyExpenses.length > 0 &&
@@ -91,7 +108,6 @@ function TransactionForm(props) {
                             OR
                         </div>
                         <div className="col-auto">
-                            {/*<label htmlFor="expenses">Select Expense Item</label>*/}
                             <select className='form-control'
                                     id="expenseItems" onChange={handleOnChangeExpenseItems}>
                                 <option value=''>Select Expense Item</option>
@@ -106,6 +122,8 @@ function TransactionForm(props) {
                         </div>
                     </>
                     }
+
+                    {/*PAID FOR MEMBERS LIST*/}
                     <div className="col-auto">
                         <label htmlFor="paidfor">Paid For</label>
                         <ul>
@@ -116,7 +134,7 @@ function TransactionForm(props) {
                                                key={member._id}
                                                type="checkbox"
                                                onChange={() => handleCheckboxChange(member)}
-                                               checked={paidForMembers.includes(member)}/>
+                                               checked={paidForMembers.includes(member._id)}/>
                                         {member.memberName}
                                     </li>
                                 )
@@ -124,14 +142,12 @@ function TransactionForm(props) {
                         </ul>
                     </div>
 
-                </Modal.Body>
 
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={toggle}>Cancel</Button>
-                    <Button variant="primary" onClick={handleSave}>Save</Button>
-                </Modal.Footer>
+                    <Button variant="secondary" onClick={handleCancel}>Cancel</Button>
+                    <Button variant="primary" onClick={handleSave}>{props.submitButtonText}</Button>
 
-            </Modal>
+
+
         </div>
     )
 
@@ -139,7 +155,8 @@ function TransactionForm(props) {
 
 const mapStateToProps = (state) => ({
     membersList: state.memberReducer.members,
-    expensesList: state.expenseReducer.expenses
+    expensesList: state.expenseReducer.expenses,
+    partyInfo: state.partyReducer.partyInfo,
 })
 const mapDispatchToProps = (dispatch) => ({
     getExpenses:(partyId) => dispatch(getExpenses(partyId)),

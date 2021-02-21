@@ -1,22 +1,32 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import TransactionForm from "./TransactionForm";
-import {addTransaction, getTransactions} from "../../redux/transactionActions";
+import {addTransaction, getTransactions, transactionGetById} from "../../redux/transactionActions";
+import {Button, IconButton} from "@material-ui/core";
+import {DeleteOutline, EditOutlined, Payment} from "@material-ui/icons";
 
 
 function TransactionsList(props) {
 
-    const addTransaction = ({purpose, memberWhoPaid, members, amount}) => {
+    function handleEditOnClick(id) {
+        props.transactionGetById(id);
 
-        const newTransaction = {
-            purpose: purpose,
-            memberWhoPaid: memberWhoPaid,
-            paidForMembers: members,
-            amount: amount,
-            partyId: props.partyId
-        }
-        props.addTransaction(newTransaction);
+        props.open({
+            title: 'Edit Transaction',
+            component: 'EditTransaction',
+            width: '200',
+        });
     }
+
+    function handleAddOnClick(){
+
+        props.open({
+            title: 'Add Transaction',
+            component: 'AddTransaction',
+            width: '200',
+        });
+    }
+
 
     useEffect(()=>{
         props.getTransactions(props.partyId);
@@ -24,21 +34,31 @@ function TransactionsList(props) {
 
     return (
         <div>
-            <h6 className='text-muted mt-3'>Transactions</h6>
-            <ul className="list-group borderless d-flex border-0">
-                <li className="list-group-item disabled border-0" key={'transaction_header'}>
+            <div className="mt-3 mb-2 text-right">
+                <Button
+                    variant="contained"
+                    color="primary"
+                    startIcon={<Payment />}
+                    onClick={handleAddOnClick}>
+                    Add Transaction
+                </Button>
+
+            </div>
+            <ul className="list-group borderless d-flex ">
+                <li  className="list-group-item disabled" key={'transaction_header'}>
                     <div className="row">
-                        <div className='col-3'>Name</div>
-                        <div  className='col-3'>Amount</div>
+                        <div className='col-2'>Name</div>
+                        <div  className='col-2'>Amount</div>
                         <div  className='col-3'>Who Paid</div>
                         <div  className='col-3'>Paid For</div>
+                        <div  className='col-2'></div>
                     </div>
                 </li>
                 {props.transactionsList.length ? props.transactionsList.map(el =>
-                    <li key={el._id} className="list-group-item border-top-1 border-left-0 border-right-0">
+                    <li key={el._id} className="list-group-item ">
                         <div className="row">
-                            <div className="col-3">{el.purpose}</div>
-                            <div className="col-3">${el.amount}</div>
+                            <div className="col-2">{el.purpose}</div>
+                            <div className="col-2">${el.amount}</div>
                             <div
                                 className="col-3">
                                 {el.memberWhoPaid.memberName}
@@ -51,6 +71,16 @@ function TransactionsList(props) {
                                         )
                                 }
                             </div>
+
+                            <div className="col-2 d-flex justify-content-end">
+                                <IconButton aria-label="edit" onClick={() => handleEditOnClick(el._id)}>
+                                    <EditOutlined color="action" fontSize="small"/>
+                                </IconButton>
+
+                                <IconButton aria-label="edit">
+                                    <DeleteOutline color="secondary" fontSize="small"/>
+                                </IconButton>
+                            </div>
                         </div>
                     </li>
                 )
@@ -58,9 +88,6 @@ function TransactionsList(props) {
                 }
             </ul>
 
-            <div className="mt-3 text-center">
-                <TransactionForm addTransaction={addTransaction} partyId={props.partyId}/>
-            </div>
         </div>
     );
 }
@@ -71,6 +98,7 @@ const mapStateToProps = (state) => ({
 })
 const mapDispatchToProps = (dispatch) => ({
     getTransactions:(partyId) => dispatch(getTransactions(partyId)),
-    addTransaction:(newTransaction) => dispatch(addTransaction(newTransaction)),
+    open: (payload) => dispatch({type: 'MODAL_OPEN', payload}),
+    transactionGetById: (transactionId) => dispatch(transactionGetById(transactionId)),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(TransactionsList);

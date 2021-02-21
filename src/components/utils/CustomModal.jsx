@@ -6,6 +6,8 @@ import {Modal} from "react-bootstrap";
 import {connect} from "react-redux";
 import PartyFormWrapperAdd from "../party/PartyFormWrapperAdd";
 import PartyFormWrapperEdit from "../party/PartyFormWrapperEdit";
+import TransactionFormWrapperAdd from "../transactions/TransactionFormWrapperAdd";
+import TransactionFormWrapperEdit from "../transactions/TransactionFormWrapperEdit";
 
 const CustomModal = (props) => {
 
@@ -19,6 +21,8 @@ const CustomModal = (props) => {
         AddMember: <MemberFormWrapperAdd/>,
         EditParty: <PartyFormWrapperEdit/>,
         AddParty: <PartyFormWrapperAdd/>,
+        AddTransaction:<TransactionFormWrapperAdd/>,
+        EditTransaction:<TransactionFormWrapperEdit/>,
     }
     const onCloseModal = () => {
         props.close();

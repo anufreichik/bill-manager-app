@@ -33,7 +33,7 @@ function MembersList(props) {
                 color="primary"
                 startIcon={<PersonAddIcon />}
                 onClick={handleAddOnClick}>
-                New Member
+                Add Member
             </Button>
             </div>
             <ul className="list-group d-flex">

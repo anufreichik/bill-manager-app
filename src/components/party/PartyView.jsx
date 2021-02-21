@@ -9,11 +9,11 @@ import { getMembers} from "../../redux/memberActions";
 import DebtsList from "../debts/DebtsList";
 
 function PartyView(props) {
-    let {partyId} = useParams();
+    //let {partyId} = useParams();
     let history = useHistory();
     let data = useLocation();
     let party = data.state.party;
-    let match = useRouteMatch();
+    //let match = useRouteMatch();
 
     const[showMembers, setShowMembers]=useState(false);
     const[showTransactions, setShowTransactions]=useState(false);
@@ -55,6 +55,7 @@ function PartyView(props) {
     useEffect(
         () => {
             props.getMembers(party._id);
+            props.setPartyInfo(party)
         }, []
     )
 
@@ -87,5 +88,6 @@ const mapStateToProps = (state) => ({
 })
 const mapDispatchToProps = (dispatch) => ({
     getMembers: (partyId) => dispatch(getMembers(partyId)),
+    setPartyInfo:(payload)=>dispatch({type:'SET_PARTY_INFO', payload})
 })
 export default connect(mapStateToProps, mapDispatchToProps)(PartyView);

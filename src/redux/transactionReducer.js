@@ -1,4 +1,7 @@
-const initialTransactions = { transactions:[],}
+const initialTransactions = {
+    transactions:[],
+    transactionInfo:{}
+}
 
 const transactionReducer = (state=initialTransactions, action) => {
     switch (action.type) {
@@ -7,6 +10,11 @@ const transactionReducer = (state=initialTransactions, action) => {
             return {
                 ...state,
                 transactions:action.payload
+            }
+        case 'SET_TRANSACTION_INFO':
+            return {
+                ...state,
+                transactionInfo: action.payload
             }
         default:
             return state;
