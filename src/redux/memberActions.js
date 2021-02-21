@@ -24,8 +24,8 @@ export function getMembers(partyId){
     }
 }
 export function addMember(member) {
+
     return (dispatch) => {
-        //axios.post(`http://localhost:5000/member`, member)
         axios({
             method: 'POST',
             headers: authHeader(),
@@ -34,7 +34,7 @@ export function addMember(member) {
         })
 
             .then(
-                (res) => dispatch(getMembers(member.partyId))
+                (res) => dispatch(getMembers(member.party))
             )
             .catch(
                 (err) => {
@@ -84,7 +84,7 @@ export function updateMemberById(member) {
         })
 
             .then(
-                (res) => dispatch(getMembers(member.partyId))
+                (res) => dispatch(getMembers(member.party))
             )
             .catch(
                 (err) => {

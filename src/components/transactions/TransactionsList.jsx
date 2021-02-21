@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
-import TransactionForm from "./TransactionForm";
-import {addTransaction, getTransactions, transactionGetById} from "../../redux/transactionActions";
+import { getTransactions, transactionGetById} from "../../redux/transactionActions";
 import {Button, IconButton} from "@material-ui/core";
 import {DeleteOutline, EditOutlined, Payment} from "@material-ui/icons";
 

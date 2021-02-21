@@ -85,7 +85,7 @@ export function updateExpenseById(expense) {
         })
 
             .then(
-                (res) => dispatch(getExpenses(expense.partyId))
+                (res) => dispatch(getExpenses(expense.party))
             )
             .catch(
                 (err) => {

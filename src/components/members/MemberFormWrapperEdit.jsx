@@ -6,7 +6,8 @@ import {connect} from "react-redux";
 function MemberFormWrapperEdit(props) {
 
     const onFinish = (member) => {
-        props.memberUpdateById(member);
+        const updatedMember={...props.memberInfo, memberName:member.name}
+        props.memberUpdateById(updatedMember);
     };
     return (
 

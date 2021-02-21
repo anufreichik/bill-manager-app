@@ -1,23 +1,11 @@
 import React, {useEffect} from 'react';
-import ExpenseItemForm from "./ExpenseItemForm";
+
 import {connect} from "react-redux";
-import {getExpenses, addExpense, expenseGetById} from "../../redux/expenseActions";
+import {getExpenses, expenseGetById} from "../../redux/expenseActions";
 import {Button, IconButton} from "@material-ui/core";
 import {DeleteOutline, EditOutlined, MonetizationOn} from "@material-ui/icons";
 
 function ExpenseItemsList(props) {
-    // const addExpense = ({expenseName, expenseAmount, tax, tip}) => {
-    //     const total = +((expenseAmount + expenseAmount*tax/100 + expenseAmount*tip/100).toFixed(2));
-    //     const newExpense = {
-    //         expenseName: expenseName,
-    //         expenseAmount: expenseAmount,
-    //         expenseTaxPercent: tax,
-    //         expenseTipPercent: tip,
-    //         expenseTotal:total,
-    //         partyId: props.partyId
-    //     }
-    //     props.addExpense(newExpense);
-    // }
 
     function handleEditOnClick(id) {
         console.log(id)

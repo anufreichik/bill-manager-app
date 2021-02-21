@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, Route, Switch, useRouteMatch} from "react-router-dom";
+import {Link, Route, Switch, useHistory, useRouteMatch} from "react-router-dom";
 import PartiesList from "../party/PartiesList";
 import PartyView from "../party/PartyView";
 import {connect} from "react-redux";
@@ -7,7 +7,13 @@ import CustomModal from "../utils/CustomModal";
 
 
 function GeneralLayout(props) {
+    let history = useHistory();
     let match = useRouteMatch();
+    function handleLogOut(){
+        history.push('/login');
+        localStorage.clear();
+       props.clearState();
+    }
 
     return (
         <>
@@ -28,7 +34,7 @@ function GeneralLayout(props) {
 
                         <ul className="nav">
                         <li className="nav-item pr-2"><small>Logged in as: {props.user?props.user[0].email:''}</small></li>
-                        <li className="nav-item"><button className='btn btn-link p-0'>Log Out</button></li>
+                        <li className="nav-item"><button className='btn btn-link p-0' onClick={handleLogOut}>Log Out</button></li>
                         </ul>
 
                         </div>
@@ -66,6 +72,6 @@ const mapStateToProps = (state) => ({
     user: state.authReducer.user
 })
 const mapDispatchToProps = (dispatch) => ({
-
+    clearState:()=>dispatch({type:'LOGOUT'})
 })
 export default connect(mapStateToProps, mapDispatchToProps)(GeneralLayout);

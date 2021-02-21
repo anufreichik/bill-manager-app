@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 function MemberFormWrapperAdd(props) {
 
     const onFinish = (values) => {
-        const newMember = { memberName: values.name, partyId:props.partyId}
+        const newMember = { memberName: values.name, party: props.partyInfo._id}
         props.addMember(newMember);
 
     }
@@ -18,8 +18,7 @@ function MemberFormWrapperAdd(props) {
 }
 
 const mapStateToProps = (state) => ({
-    //membersList: state.memberReducer.members,
-    //CustomModal: state.modalReducer.CustomModal,
+    partyInfo: state.partyReducer.partyInfo,
 })
 const mapDispatchToProps = (dispatch) => ({
     close: () => dispatch({type:'MODAL_CLOSE'}),

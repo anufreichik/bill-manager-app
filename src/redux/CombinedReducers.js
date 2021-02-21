@@ -8,13 +8,22 @@ import authReducer from "./authReducer";
 import debtReducer from "./debtReducer";
 import modalReducer from "./modalReducer";
 
-export default combineReducers({
-    partyReducer,
-    memberReducer,
-    expenseReducer,
-    transactionReducer,
-    userReducer,
-    authReducer,
-    debtReducer,
-    modalReducer
-})
+const appReducer = combineReducers({
+                    partyReducer,
+                    memberReducer,
+                    expenseReducer,
+                    transactionReducer,
+                    userReducer,
+                    authReducer,
+                    debtReducer,
+                    modalReducer
+});
+
+const rootReducer = (state, action) => {
+    if (action.type === 'LOGOUT')
+        state = undefined;
+
+    return appReducer(state, action);
+};
+
+export default rootReducer;
