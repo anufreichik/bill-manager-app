@@ -13,7 +13,9 @@ function App() {
     return (
         <div>
             <Switch>
-                <Route path="/login" component={LoginLayout}/>
+                <Route path="/login">
+                    <LoginLayout/>
+                </Route>
 
                 <ProtectedRoute path="/dashboard"  >
                     <GeneralLayout/>
@@ -27,7 +29,6 @@ function App() {
                     <Redirect exact from="/" to="dashboard" />
                 </Route>
 
-                {/*<Route path="/"  component={GeneralLayout}/>*/}
             </Switch>
         </div>
 

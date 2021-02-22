@@ -9,10 +9,11 @@ import CustomModal from "../utils/CustomModal";
 function GeneralLayout(props) {
     let history = useHistory();
     let match = useRouteMatch();
+
     function handleLogOut(){
         history.push('/login');
         localStorage.clear();
-       props.clearState();
+        props.clearState();
     }
 
     return (
