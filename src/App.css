@@ -31,10 +31,17 @@ a.create-new-account {
 
 
 .bg-nav-custom{
-  background-color: #d8e2e9;
+  background-color: #e0e0e0;
 }
-.title-custom{
-  color: #d40a74;
+h2.title-custom{
+  color: #0d5eea;
+  font-size:20px;
+}
+
+button.MuiButton-containedPrimary, button.MuiButton-containedPrimary:hover{
+  background-color: #007bff;
+  border-radius: .25rem;
+  font-size:.75rem;
 }
 @keyframes App-logo-spin {
   from {

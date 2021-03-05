@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 function MemberFormWrapperAdd(props) {
 
     const onFinish = (values) => {
-        const newMember = { memberName: values.name, party: props.partyInfo._id}
+        const newMember = { memberName: values.name, email: values.email, party: props.partyInfo._id}
         props.addMember(newMember);
 
     }

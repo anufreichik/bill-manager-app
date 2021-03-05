@@ -22,7 +22,7 @@ function GeneralLayout(props) {
                 <div className="container-fluid">
 
                     <div className="collapse navbar-collapse" >
-                        <h5 className="pt-3 pb-2 navbar-brand title-custom"  >Group Bill Manager</h5>
+                        <h2 className="pt-3 pb-2 navbar-brand title-custom"  >Group Bill Manager</h2>
                         <div className='container-fluid d-flex justify-content-between'>
                             <ul className="nav">
                                 <li className="nav-item">
