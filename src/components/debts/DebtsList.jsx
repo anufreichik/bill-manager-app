@@ -1,7 +1,9 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import {getDebts} from "../../redux/debtActions";
-import {ArrowForward} from '@material-ui/icons';
+import {ArrowForward, DeleteOutline, EditOutlined} from '@material-ui/icons';
+import MaterialTable from "material-table";
+import {IconButton} from "@material-ui/core";
 
 function DebtsList(props) {
     useEffect(()=>{
@@ -11,22 +13,24 @@ function DebtsList(props) {
 
     return (
         <div >
-            <h6 className='text-muted mt-3'>Debts</h6>
-            <ul className="list-group d-flex">
-                {props.debtsList && props.debtsList.map(el =>
-                    <li key={el._id} className="list-group-item">
-                        <div className="row">
-                            <div className="col-2 ">{el.transaction.purpose}</div>
-                            <div className="col-3 text-center">{el.member.memberName}</div>
-                            <div className="col-1"><ArrowForward/> </div>
-                            <div className="col-3 text-center">{el.debtToMember.memberName}</div>
-                            <div className="col-2">${el.debtAmount.toFixed(2)}</div>
-                            <div className="col-1">{el.paid?'paid':'not paid'}</div>
-                        </div>
-                    </li>
-                )}
-            </ul>
 
+            <MaterialTable
+                title="Debts"
+                columns={[
+                    { title: 'Purpose', field: 'transaction.purpose' },
+                    { title: 'Debt From', field: 'member.memberName' },
+                    { title: '', field: '' , filtering: false, sorting:false, render: rowData =><ArrowForward/>,},
+                    { title: 'Debt To', field: 'debtToMember.memberName' },
+                    { title: 'Debt Amount', field: 'debtToMember.memberName' , render: rowData => <>${rowData.debtAmount.toFixed(2)}</>,},
+                    { title: 'Paid', field: 'paid' , render: rowData => <>{rowData.paid?'paid':'not paid'}</>,},
+                ]}
+                data={props.debtsList}
+                options={{
+                    //filtering: true,
+                    sorting: true,
+                    search:true
+                }}
+            />
 
         </div>
     );
