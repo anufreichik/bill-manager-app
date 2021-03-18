@@ -2,29 +2,34 @@ import React from 'react';
 import UserLogin from "../user/UserLogin";
 import {Route, Switch, useRouteMatch} from "react-router-dom";
 import UserRegister from "../user/UserRegister";
+import Header from "../pages/Header";
+import Footer from "../pages/Footer";
 
 function LoginLayout(props) {
     let match = useRouteMatch();
     return (
         <>
-            <h5 className="bg-secondary text-white pt-3 pb-2">Group Bill Manager</h5>
-            <div className="container-fluid">
+           <Header/>
+           <main>
+            <div className="container">
                 <div className="row">
 
                         <Switch>
                             <Route path={`${match.path}/register`}  exact >
                                 <UserRegister/>
                             </Route>
-                            <Route path={`${match.path}/`} exact >
+                            <Route path={`${match.path}/`}  >
                                 <UserLogin/>
                             </Route>
                         </Switch>
 
                 </div>
-                <div className="footer fixed-bottom mb-2 small d-flex justify-content-around">
-                    footer
-                </div>
+                {/*<div className="footer fixed-bottom mb-2 small d-flex justify-content-around">*/}
+                {/*    footer*/}
+                {/*</div>*/}
             </div>
+           </main>
+            <Footer/>
         </>
     );
 }

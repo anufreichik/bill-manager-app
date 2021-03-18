@@ -4,13 +4,15 @@ import PartiesList from "../party/PartiesList";
 import PartyView from "../party/PartyView";
 import {connect} from "react-redux";
 import CustomModal from "../utils/CustomModal";
+import {AiFillDollarCircle} from "react-icons/all";
+import Footer from "../pages/Footer";
 
 
 function GeneralLayout(props) {
     let history = useHistory();
     let match = useRouteMatch();
 
-    function handleLogOut(){
+    function handleLogOut() {
         history.push('/login');
         localStorage.clear();
         props.clearState();
@@ -18,52 +20,59 @@ function GeneralLayout(props) {
 
     return (
         <>
-            <nav className='navbar navbar-expand flex-column flex-md-row  bg-nav-custom'>
-                <div className="container-fluid">
 
-                    <div className="collapse navbar-collapse" >
-                        <h2 className="pt-3 pb-2 navbar-brand title-custom"  >Group Bill Manager</h2>
-                        <div className='container-fluid d-flex justify-content-between'>
-                            <ul className="nav">
+            <header className='container'>
+                <div className='row'>
+                    <nav className='navbar navbar-expand bg-light justify-content-between'>
+                        <Link className="navbar-brand text-dark" to={`/landing`}><strong>Party<AiFillDollarCircle
+                            color='red'/>Manager</strong>
+                        </Link>
+
+                        <div>
+
+                            <ul className="navbar-nav  text-dark mt-1">
                                 <li className="nav-item">
-                                    <Link className='nav-link' to={`${match.path}/party`}>My Parties</Link>
+                                    <Link className='nav-link text-dark' to={`${match.path}/party`}>My Parties</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className='nav-link' to={`${match.path}/settings`}>Settings</Link>
+                                    <Link className='nav-link text-dark' to={`${match.path}/settings`}>Settings</Link>
                                 </li>
+
                             </ul>
 
-                        <ul className="nav">
-                        <li className="nav-item pr-2"><small>Logged in as: {props.user?props.user[0].email:''}</small></li>
-                        <li className="nav-item"><button className='btn btn-link p-0' onClick={handleLogOut}>Log Out</button></li>
-                        </ul>
-
                         </div>
-                    </div>
+                        <div >
+                        <ul className="navbar-nav  text-dark mt-1">
+                            <li className="nav-item text-dark">
+                                <div className='text-muted'>Logged in as: {props.user ? props.user[0].email : ''}</div>
+                            </li>
+
+                            <li className="nav-item text-dark ">
+                                <button className='btn btn-link p-0' onClick={handleLogOut}>Log Out</button>
+                            </li>
+                        </ul>
+                        </div>
+                    </nav>
                 </div>
+            </header>
+            <CustomModal/>
+            <main  >
+            <div className="container">
+                <Switch>
+                    <Route path={`${match.path}/party`} exact>
+                        <PartiesList/>
+                    </Route>
+                    <Route path={`${match.path}/party/:partyId`}>
+                        <PartyView/>
+                    </Route>
+                    <Route path={`${match.path}/settings`} exact>
+                        <div>Settings Component be here</div>
+                    </Route>
 
-            </nav>
-            <CustomModal />
-            <div className="container-fluid">
-
-                    <Switch>
-                        <Route path={`${match.path}/party`}  exact >
-                            <PartiesList/>
-                        </Route>
-                        <Route path={`${match.path}/party/:partyId`}  >
-                            <PartyView/>
-                        </Route>
-                        <Route path={`${match.path}/settings`} exact >
-                            <div>Settings Component be here</div>
-                        </Route>
-
-                    </Switch>
-
-                    <footer className="footer fixed-bottom mb-2 small d-flex justify-content-around">
-                        footer
-                    </footer>
-
+                </Switch>
             </div>
+            </main>
+            <Footer/>
         </>
     );
 }
@@ -73,6 +82,6 @@ const mapStateToProps = (state) => ({
     user: state.authReducer.user
 })
 const mapDispatchToProps = (dispatch) => ({
-    clearState:()=>dispatch({type:'LOGOUT'})
+    clearState: () => dispatch({type: 'LOGOUT'})
 })
 export default connect(mapStateToProps, mapDispatchToProps)(GeneralLayout);

@@ -1,5 +1,28 @@
-.App {
-  text-align: center;
+
+body{
+  font-family: Roboto;
+}
+footer{
+  background-color: rgba(25,36,45);
+  font-size: 14px;
+  color:#7b7e7f;
+  padding-top:2.2rem;
+  padding-bottom: 2.2rem;
+}
+main{
+  height: 100vh;
+}
+
+.font-bold{
+  font-width: 700;
+}
+.text-32{
+font-size: 2rem;
+}
+
+.navbar-nav > li{
+  padding-left:10px;
+  padding-right:30px;
 }
 
 body.sigin-body {
@@ -17,7 +40,6 @@ form.sigin-form {
 
 button.signin-btn {
   color: #ffffff;
-
   width: 100%;
   margin-bottom: 1.2rem;
 }
@@ -29,19 +51,26 @@ a.create-new-account {
   margin-top: 15px;
 }
 
-
-.bg-nav-custom{
-  background-color: #e0e0e0;
-}
-h2.title-custom{
-  color: #0d5eea;
-  font-size:20px;
-}
-
 button.MuiButton-containedPrimary, button.MuiButton-containedPrimary:hover{
   background-color: #007bff;
   border-radius: .25rem;
   font-size:.75rem;
+}
+
+
+@media (min-width: 768px) {
+  .md\:text-50 {
+    font-size: 3.125rem;
+    line-height: 1.4;
+    letter-spacing: -.018em;
+  }
+}
+@media (min-width: 1024px) {
+  .lg\:text-74 {
+    font-size: 4.625rem;
+    line-height: 1.4;
+    letter-spacing: -.018em;
+  }
 }
 @keyframes App-logo-spin {
   from {

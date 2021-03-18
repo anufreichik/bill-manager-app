@@ -6,6 +6,7 @@ import {Route} from "react-router-dom";
 import LoginLayout from "./components/layout/LoginLayout";
 import GeneralLayout from "./components/layout/GeneralLayout";
 import ProtectedRoute from "./components/layout/ProtectedRoute";
+import Landing from "./components/pages/Landing";
 
 
 
@@ -13,6 +14,9 @@ function App() {
     return (
         <div>
             <Switch>
+                <Route path="/landing">
+                    <Landing/>
+                </Route>
                 <Route path="/login">
                     <LoginLayout/>
                 </Route>
@@ -22,11 +26,11 @@ function App() {
                 </ProtectedRoute>
 
                 <Route exact path="/">
-                    <Redirect exact from="/" to="dashboard" />
+                    <Redirect exact from="/" to="landing" />
                 </Route>
 
                 <Route path="*">
-                    <Redirect exact from="/" to="dashboard" />
+                    <Redirect exact from="/" to="landing" />
                 </Route>
 
             </Switch>
