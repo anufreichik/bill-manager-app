@@ -23,7 +23,7 @@ function GeneralLayout(props) {
 
             <header className='container'>
                 <div className='row'>
-                    <nav className='navbar navbar-expand bg-light justify-content-between'>
+                    <nav className='navbar navbar-expand justify-content-between'>
                         <Link className="navbar-brand text-dark" to={`/landing`}><strong>Party<AiFillDollarCircle
                             color='red'/>Manager</strong>
                         </Link>
@@ -56,7 +56,7 @@ function GeneralLayout(props) {
                 </div>
             </header>
             <CustomModal/>
-            <main  >
+            <main>
             <div className="container">
                 <Switch>
                     <Route path={`${match.path}/party`} exact>

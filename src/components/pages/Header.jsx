@@ -9,7 +9,7 @@ function Header(props) {
     return (
         <header className='container'>
             <div className='row'>
-                <nav className='navbar navbar-expand bg-light'>
+                <nav className='navbar navbar-expand'>
                     <Link className="navbar-brand text-dark" to={`/landing`}><strong>Party<AiFillDollarCircle
                         color='red'/>Manager</strong>
                     </Link>

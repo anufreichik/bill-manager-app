@@ -36,7 +36,7 @@ function TransactionsList(props) {
             <div className="mt-3 mb-2 text-right">
                 <Button
                     variant="contained"
-                    color="primary"
+                    color="secondary"
                     startIcon={<Payment />}
                     onClick={handleAddOnClick}>
                     Add Transaction

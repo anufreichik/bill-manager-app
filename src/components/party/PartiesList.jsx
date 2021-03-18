@@ -40,7 +40,7 @@ function PartiesList(props) {
             <div className="mt-3 mb-2 text-right">
                 <Button
                     variant="contained"
-                    color="primary"
+                    color="secondary"
                     startIcon={<GroupAdd />}
                     onClick={handleAddOnClick}>
                     Create New Party

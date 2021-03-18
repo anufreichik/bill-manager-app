@@ -12,7 +12,6 @@ footer{
 main{
   height: 100vh;
 }
-
 .font-bold{
   font-width: 700;
 }
@@ -57,6 +56,9 @@ button.MuiButton-containedPrimary, button.MuiButton-containedPrimary:hover{
   font-size:.75rem;
 }
 
+div.MuiPaper-elevation2{
+  box-shadow: none;
+}
 
 @media (min-width: 768px) {
   .md\:text-50 {

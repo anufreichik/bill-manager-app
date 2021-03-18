@@ -62,8 +62,8 @@ function PartyView(props) {
 
     return (
         <div className="container mt-3">
-            <div className="card border-dark">
-                <div className="card-body card-header">
+            <div className="card border-light">
+                <div className="card-body">
                     <h3 className="card-title">{party.partyName}</h3>
                     <h6 className="card-subtitle mb-2 text-muted">{moment(party.partyDate).format('MM-DD-YYYY')}</h6>
                     <p className="card-text">{party.description}</p>

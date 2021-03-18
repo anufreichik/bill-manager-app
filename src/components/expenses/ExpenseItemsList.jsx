@@ -35,7 +35,7 @@ function ExpenseItemsList(props) {
             <div className="mt-3 mb-2 text-right">
                 <Button
                     variant="contained"
-                    color="primary"
+                    color="secondary"
                     startIcon={<MonetizationOn />}
                     onClick={handleAddOnClick}>
                     Add Expense

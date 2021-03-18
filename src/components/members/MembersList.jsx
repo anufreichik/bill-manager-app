@@ -32,7 +32,7 @@ function MembersList(props) {
             <div className="mt-3 mb-2 text-right">
                 <Button
                 variant="contained"
-                color="primary"
+                color="secondary"
                 startIcon={<PersonAddIcon />}
                 onClick={handleAddOnClick}>
                 Add Member
@@ -42,8 +42,9 @@ function MembersList(props) {
 
             <MaterialTable
                 title="Members List"
+
                 columns={[
-                    { title: 'Alias', field: 'memberName', filtering: false, render: rowData =>  <span className="badge badge-pill bg-secondary text-white ">{rowData.memberName.slice(0,3).toUpperCase()}</span>  },
+                    { title: 'Alias', field: 'memberName', filtering: false, render: rowData =>  <span className="badge badge-pill bg-primary text-white ">{rowData.memberName.slice(0,3).toUpperCase()}</span>  },
                     { title: 'Name', field: 'memberName' },
                     { title: 'Email', field: 'email' , render: rowData => <>{rowData.email?rowData.email:''}</>,},
                     {
@@ -74,7 +75,6 @@ function MembersList(props) {
                     search:true
                 }}
             />
-
 
 
             {/*<ul className="list-group d-flex">*/}

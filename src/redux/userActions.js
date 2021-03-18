@@ -16,7 +16,7 @@ export function userLogin(user, history){
                         // store user details and jwt token in local storage to keep user logged in between page refreshes
                         localStorage.setItem('user', JSON.stringify(res.data.user));
                         dispatch({type:'LOGIN_SUCCESS', payload:res.data});
-                        history.push('/dashboard');
+                        history.push('/dashboard/party');
                     }
 
                 }
