@@ -5,6 +5,7 @@ import {addParty, getParties, partyGetById} from "../../redux/partyActions";
 import moment from 'moment';
 import {Button, IconButton} from "@material-ui/core";
 import {DeleteOutline, EditOutlined, GroupAdd} from "@material-ui/icons";
+import MaterialTable from "material-table";
 
 function PartiesList(props) {
     let history = useHistory();
@@ -37,7 +38,7 @@ function PartiesList(props) {
     return (
 
         <div className="container">
-            <div className="mt-3 mb-2 text-right">
+            <div className="mt-3 mb-2 text-center">
                 <Button
                     variant="contained"
                     color="secondary"
@@ -47,31 +48,43 @@ function PartiesList(props) {
                 </Button>
 
             </div>
-            <ul className="list-group d-flex">
-                {props.partiesList.map(el =>
-                    <li key={el._id} className="list-group-item">
-                        <div className="row">
-                            <div className="col-3">
-                                <Link to={{pathname: `${match.path}/${el._id}`, state: {party: el}}}>{el.partyName}</Link></div>
-                            <div className="col-2"> {moment(el.partyDate).format('MM-DD-YYYY')}</div>
-                            <div className="col-1 offset-4"><span
-                                className="badge bg-secondary rounded-circle text-white ml-1">{0}</span></div>
 
-                            <div className="col-2 d-flex justify-content-end">
-                                <IconButton aria-label="edit" onClick={() => handleEditOnClick(el._id)}>
+
+            <MaterialTable
+                title="My Parties"
+
+                columns={[
+                    { title: 'Party', field: 'partyName', render: rowData =>  <Link to={{pathname: `${match.path}/${rowData._id}`, state: {party: rowData}}}>{rowData.partyName}</Link> },
+                    { title: 'Party Date', field: 'partyDate', render: rowData => <>{moment(rowData.partyDate).format('MM-DD-YYYY')}</> },
+                    { title: 'Members', field: '_id' , render: rowData =><span className="badge bg-secondary rounded-circle text-white ml-1">{0}</span>},
+                    {
+                        field: '_id',
+                        title: '',
+                        filtering: false,
+                        sorting: false,
+                        cellStyle: {
+                            textAlign: "right"
+                        },
+                        render: rowData => {
+                            return (<>
+                                <IconButton aria-label="edit" onClick={() => handleEditOnClick(rowData._id)}>
                                     <EditOutlined color="action" fontSize="small"/>
                                 </IconButton>
 
                                 <IconButton aria-label="edit">
                                     <DeleteOutline color="secondary" fontSize="small"/>
                                 </IconButton>
-                            </div>
-                        </div>
-
-                    </li>
-                )}
-
-            </ul>
+                            </>)
+                        }
+                    }
+                ]}
+                data={props.partiesList}
+                options={{
+                    //filtering: true,
+                    sorting: true,
+                    search:true
+                }}
+            />
         </div>
     );
 }

@@ -23,14 +23,15 @@ function GeneralLayout(props) {
 
             <header className='container'>
                 <div className='row'>
-                    <nav className='navbar navbar-expand justify-content-between'>
+                    <div className='col-12'>
+                    <nav className='navbar navbar-expand'>
                         <Link className="navbar-brand text-dark" to={`/landing`}><strong>Party<AiFillDollarCircle
                             color='red'/>Manager</strong>
                         </Link>
 
-                        <div>
+                        <div class="collapse navbar-collapse">
 
-                            <ul className="navbar-nav  text-dark mt-1">
+                            <ul className="navbar-nav  text-dark mt-1 mr-auto">
                                 <li className="nav-item">
                                     <Link className='nav-link text-dark' to={`${match.path}/party`}>My Parties</Link>
                                 </li>
@@ -40,37 +41,38 @@ function GeneralLayout(props) {
 
                             </ul>
 
-                        </div>
-                        <div >
-                        <ul className="navbar-nav  text-dark mt-1">
-                            <li className="nav-item text-dark">
-                                <div className='text-muted'>Logged in as: {props.user ? props.user[0].email : ''}</div>
-                            </li>
 
-                            <li className="nav-item text-dark ">
-                                <button className='btn btn-link p-0' onClick={handleLogOut}>Log Out</button>
-                            </li>
-                        </ul>
+                            <ul className="navbar-nav  text-dark mt-1">
+                                <li className="nav-item">
+                                    <div className='text-muted'>Logged in
+                                        as: {props.user ? props.user[0].email : ''}</div>
+                                </li>
+
+                                <li className="nav-item">
+                                    <button className='btn btn-link p-0' onClick={handleLogOut}>Log Out</button>
+                                </li>
+                            </ul>
                         </div>
                     </nav>
+                    </div>
                 </div>
             </header>
             <CustomModal/>
             <main>
-            <div className="container">
-                <Switch>
-                    <Route path={`${match.path}/party`} exact>
-                        <PartiesList/>
-                    </Route>
-                    <Route path={`${match.path}/party/:partyId`}>
-                        <PartyView/>
-                    </Route>
-                    <Route path={`${match.path}/settings`} exact>
-                        <div>Settings Component be here</div>
-                    </Route>
+                <div className="container">
+                    <Switch>
+                        <Route path={`${match.path}/party`} exact>
+                            <PartiesList/>
+                        </Route>
+                        <Route path={`${match.path}/party/:partyId`}>
+                            <PartyView/>
+                        </Route>
+                        <Route path={`${match.path}/settings`}>
+                            <div>Settings Component be here</div>
+                        </Route>
 
-                </Switch>
-            </div>
+                    </Switch>
+                </div>
             </main>
             <Footer/>
         </>

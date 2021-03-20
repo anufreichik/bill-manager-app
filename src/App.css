@@ -1,7 +1,21 @@
 
 body{
   font-family: Roboto;
+
+
 }
+.landing-body::after {
+  content: "";
+  background-image: url('components/pages/landing-bg.svg');
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
 footer{
   background-color: rgba(25,36,45);
   font-size: 14px;
@@ -11,6 +25,9 @@ footer{
 }
 main{
   height: 100vh;
+}
+.card-text{
+  font-family: "Segoe UI";
 }
 .font-bold{
   font-width: 700;
@@ -59,6 +76,15 @@ button.MuiButton-containedPrimary, button.MuiButton-containedPrimary:hover{
 div.MuiPaper-elevation2{
   box-shadow: none;
 }
+
+
+#grad1 {
+  height: 200px;
+  background-color: #cccccc;
+  background-image: linear-gradient(red, yellow);
+  opacity:10%;
+}
+
 
 @media (min-width: 768px) {
   .md\:text-50 {

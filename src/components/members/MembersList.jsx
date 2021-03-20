@@ -29,7 +29,7 @@ function MembersList(props) {
 
     return (
         <div>
-            <div className="mt-3 mb-2 text-right">
+            <div className="mt-3 mb-2 text-center">
                 <Button
                 variant="contained"
                 color="secondary"
@@ -41,7 +41,7 @@ function MembersList(props) {
 
 
             <MaterialTable
-                title="Members List"
+                title="Members"
 
                 columns={[
                     { title: 'Alias', field: 'memberName', filtering: false, render: rowData =>  <span className="badge badge-pill bg-primary text-white ">{rowData.memberName.slice(0,3).toUpperCase()}</span>  },
@@ -49,7 +49,7 @@ function MembersList(props) {
                     { title: 'Email', field: 'email' , render: rowData => <>{rowData.email?rowData.email:''}</>,},
                     {
                         field: '_id',
-                        title: 'Actions',
+                        title: '',
                         filtering: false,
                         sorting: false,
                         cellStyle: {

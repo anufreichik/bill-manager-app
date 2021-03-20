@@ -1,8 +1,11 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
-import { getTransactions, transactionGetById} from "../../redux/transactionActions";
+import {getTransactions, transactionGetById} from "../../redux/transactionActions";
 import {Button, IconButton} from "@material-ui/core";
 import {DeleteOutline, EditOutlined, Payment} from "@material-ui/icons";
+import {Link} from "react-router-dom";
+import moment from "moment";
+import MaterialTable from "material-table";
 
 
 function TransactionsList(props) {
@@ -17,7 +20,7 @@ function TransactionsList(props) {
         });
     }
 
-    function handleAddOnClick(){
+    function handleAddOnClick() {
 
         props.open({
             title: 'Add Transaction',
@@ -27,65 +30,72 @@ function TransactionsList(props) {
     }
 
 
-    useEffect(()=>{
+    useEffect(() => {
         props.getTransactions(props.partyId);
-    },[])
+    }, [])
 
     return (
         <div>
-            <div className="mt-3 mb-2 text-right">
+            <div className="mt-3 mb-2 text-center">
                 <Button
                     variant="contained"
                     color="secondary"
-                    startIcon={<Payment />}
+                    startIcon={<Payment/>}
                     onClick={handleAddOnClick}>
                     Add Transaction
                 </Button>
 
             </div>
-            <ul className="list-group borderless d-flex ">
-                <li  className="list-group-item disabled" key={'transaction_header'}>
-                    <div className="row">
-                        <div className='col-2'>Name</div>
-                        <div  className='col-2'>Amount</div>
-                        <div  className='col-3'>Who Paid</div>
-                        <div  className='col-3'>Paid For</div>
-                        <div  className='col-2'></div>
-                    </div>
-                </li>
-                {props.transactionsList.length ? props.transactionsList.map(el =>
-                    <li key={el._id} className="list-group-item ">
-                        <div className="row">
-                            <div className="col-2">{el.purpose}</div>
-                            <div className="col-2">${el.amount}</div>
-                            <div
-                                className="col-3">
-                                {el.memberWhoPaid.memberName}
-                            </div>
-                            <div className="col-3">
+
+            <MaterialTable
+                title="Transactions"
+
+                columns={[
+                    {title: 'Name', field: 'purpose'},
+                    {title: 'Amount', field: 'amount', render: rowData => <>${rowData.amount}</>},
+                    {title: 'Who Paid', field: 'memberWhoPaid.memberName'},
+                    {
+                        title: 'Paid For', field: 'paidForMembers', render: rowData =>
+                            (<>
                                 {
-                                    el.paidForMembers
-                                        .map(m =>
-                                            <span key={m._id} className="mr-2 badge badge-pill bg-primary text-white">{m.memberName[0].toUpperCase()}</span>
+                                    rowData.paidForMembers
+                                        .map
+                                        (m =>
+                                            <span key={m._id}
+                                                  className="mr-2 badge badge-pill bg-primary text-white">{m.memberName.slice(0,5).toUpperCase()}</span>
                                         )
                                 }
-                            </div>
-
-                            <div className="col-2 d-flex justify-content-end">
-                                <IconButton aria-label="edit" onClick={() => handleEditOnClick(el._id)}>
+                            </>)
+                    },
+                    {
+                        field: '_id',
+                        title: '',
+                        filtering: false,
+                        sorting: false,
+                        cellStyle: {
+                            textAlign: "right"
+                        },
+                        render: rowData => {
+                            return (<>
+                                <IconButton aria-label="edit" onClick={() => handleEditOnClick(rowData._id)}>
                                     <EditOutlined color="action" fontSize="small"/>
                                 </IconButton>
 
                                 <IconButton aria-label="edit">
                                     <DeleteOutline color="secondary" fontSize="small"/>
                                 </IconButton>
-                            </div>
-                        </div>
-                    </li>
-                )
-                    :(<div className='row m-auto mt-1'>No Transactions found</div>)
-                }
-            </ul>
+                            </>)
+                        }
+                    }
+                ]}
+                data={props.transactionsList}
+                options={{
+                    //filtering: true,
+                    sorting: true,
+                    search: true
+                }}
+            />
+
 
         </div>
     );
@@ -96,7 +106,7 @@ const mapStateToProps = (state) => ({
     membersList: state.memberReducer.members
 })
 const mapDispatchToProps = (dispatch) => ({
-    getTransactions:(partyId) => dispatch(getTransactions(partyId)),
+    getTransactions: (partyId) => dispatch(getTransactions(partyId)),
     open: (payload) => dispatch({type: 'MODAL_OPEN', payload}),
     transactionGetById: (transactionId) => dispatch(transactionGetById(transactionId)),
 })

@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {getExpenses, expenseGetById} from "../../redux/expenseActions";
 import {Button, IconButton} from "@material-ui/core";
 import {DeleteOutline, EditOutlined, MonetizationOn} from "@material-ui/icons";
+import MaterialTable from "material-table";
 
 function ExpenseItemsList(props) {
 
@@ -32,7 +33,7 @@ function ExpenseItemsList(props) {
     )
     return (
         <div>
-            <div className="mt-3 mb-2 text-right">
+            <div className="mt-3 mb-2 text-center">
                 <Button
                     variant="contained"
                     color="secondary"
@@ -41,31 +42,44 @@ function ExpenseItemsList(props) {
                     Add Expense
                 </Button>
             </div>
-            <ul className="list-group d-flex">
-                {props.expensesList && props.expensesList.map(el =>
-                    <li key={el._id} className="list-group-item">
-                        <div className="row">
-                            <div className="col-2">{el.expenseName}</div>
-                            <div className="col-2">${el.expenseAmount}</div>
-                            <div className="col-2">{el.expenseTaxPercent} %</div>
-                            <div className="col-2">{el.expenseTipPercent} %</div>
-                            <div className="col-2">${el.expenseTotal}</div>
 
-                            <div className="col-2 d-flex justify-content-end">
-                                <IconButton aria-label="edit" onClick={() => handleEditOnClick(el._id)}>
+            <MaterialTable
+                title="Expense Items"
+                columns={[
+                    { title: 'Expense', field: 'expenseName' },
+                    { title: 'Amount', field: 'expenseAmount' , render: rowData => <>${rowData.expenseAmount}</>},
+                    { title: 'Tax', field: 'expenseTaxPercent' , render: rowData => <>{rowData.expenseTaxPercent}%</>},
+                    { title: 'Tip', field: 'expenseTipPercent' , render: rowData => <>{rowData.expenseTipPercent}%</>},
+                    { title: 'Total', field: 'expenseTotal' , render: rowData => <>${rowData.expenseTipPercent}</>},
+
+                    {
+                        field: '_id',
+                        title: '',
+                        filtering: false,
+                        sorting: false,
+                        cellStyle: {
+                            textAlign: "right"
+                        },
+                        render: rowData => {
+                            return (<>
+                                <IconButton aria-label="edit" onClick={() => handleEditOnClick(rowData._id)}>
                                     <EditOutlined color="action" fontSize="small"/>
                                 </IconButton>
 
                                 <IconButton aria-label="edit">
                                     <DeleteOutline color="secondary" fontSize="small"/>
                                 </IconButton>
-                            </div>
-
-
-                        </div>
-                    </li>
-                )}
-            </ul>
+                            </>)
+                        }
+                    }
+                ]}
+                data={props.expensesList}
+                options={{
+                    //filtering: true,
+                    sorting: true,
+                    search:true
+                }}
+            />
 
 
         </div>

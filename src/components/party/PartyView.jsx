@@ -15,7 +15,7 @@ function PartyView(props) {
     let party = data.state.party;
     //let match = useRouteMatch();
 
-    const[showMembers, setShowMembers]=useState(false);
+    const[showMembers, setShowMembers]=useState(true);
     const[showTransactions, setShowTransactions]=useState(false);
     const[showExpenses, setShowExpenses]=useState(false);
     const[showDebts, setShowDebts]=useState(false);
@@ -67,7 +67,7 @@ function PartyView(props) {
                     <h3 className="card-title">{party.partyName}</h3>
                     <h6 className="card-subtitle mb-2 text-muted">{moment(party.partyDate).format('MM-DD-YYYY')}</h6>
                     <p className="card-text">{party.description}</p>
-                    <button className="btn btn-link shadow-none" onClick={handleMembersClick}>Members</button>
+                    <button className="btn btn-link active shadow-none" onClick={handleMembersClick}>Members</button>
                     {partyMembers.length>0 &&<button className="btn btn-link shadow-none" onClick={handleTransactionsClick}>Transactions</button>}
                     <button className="btn btn-link shadow-none" onClick={handleExpensesClick}>Expense Items</button>
                     <button className="btn btn-link shadow-none" onClick={handleDebtsClick}>Debts</button>

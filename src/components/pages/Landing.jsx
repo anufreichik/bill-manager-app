@@ -7,7 +7,7 @@ import Footer from "./Footer";
 function Landing(props) {
 
     return (
-        <>
+        <div className='landing-body'>
             <Header/>
             <main >
                 <div className='container' >
@@ -19,7 +19,7 @@ function Landing(props) {
                                 bills ever</h1>
                         </div>
                         <div className='col-6'>
-                            <div className='mt-5'><img src={landingImage} height='90%' width='90%'/></div>
+                            <div className='mt-5'><img src={landingImage} width='700' /></div>
                         </div>
                     </div>
                     <div className='row mt-5'>
@@ -63,7 +63,7 @@ function Landing(props) {
                 </div>
             </main>
             <Footer/>
-        </>
+        </div>
     );
 }
 
