@@ -6,7 +6,7 @@ export function userLogin(user, history){
         axios({
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            url: `http://localhost:5000/user/login`,
+            url: `${process.env.REACT_APP_API_URL}/user/login`,
             data:user
         })
             .then(
@@ -37,7 +37,7 @@ export function userCreate(user) {
         axios({
             method:'POST',
             headers: { 'Content-Type': 'application/json' },
-            url:`http://localhost:5000/user`,
+            url:`${process.env.REACT_APP_API_URL}/user`,
             data: user
         })
             .then(

@@ -1,9 +1,8 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import {getDebts} from "../../redux/debtActions";
-import {ArrowForward, DeleteOutline, EditOutlined} from '@material-ui/icons';
+import {ArrowForward} from '@material-ui/icons';
 import MaterialTable from "material-table";
-import {IconButton} from "@material-ui/core";
 
 function DebtsList(props) {
     useEffect(()=>{

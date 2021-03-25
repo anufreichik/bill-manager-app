@@ -1,13 +1,12 @@
 import axios from 'axios';
 import {authHeader} from "../helpers/authHeader";
-import {getMembers} from "./memberActions";
 
 export function getTransactions(partyId){
     return (dispatch) => {
         axios({
             method: 'POST',
             headers: authHeader(),
-            url: `http://localhost:5000/transaction/search`,
+            url: `${process.env.REACT_APP_API_URL}/transaction/search`,
             data: {partyId}
         })
             .then(
@@ -32,7 +31,7 @@ export function addTransaction(transaction){
         axios({
             method: 'POST',
             headers: authHeader(),
-            url: `http://localhost:5000/transaction`,
+            url: `${process.env.REACT_APP_API_URL}/transaction`,
             data: transaction
         })
             .then(
@@ -57,7 +56,7 @@ export function transactionGetById(transactionId) {
         axios({
             method: 'GET',
             headers: authHeader(),
-            url: `http://localhost:5000/transaction/${transactionId}`
+            url: `${process.env.REACT_APP_API_URL}/transaction/${transactionId}`
         })
 
             .then(
@@ -82,7 +81,7 @@ export function updateTransactionById(transaction) {
         axios({
             method: 'PATCH',
             headers: authHeader(),
-            url: `http://localhost:5000/transaction/${transaction._id}`,
+            url: `${process.env.REACT_APP_API_URL}/transaction/${transaction._id}`,
             data:transaction
         })
 

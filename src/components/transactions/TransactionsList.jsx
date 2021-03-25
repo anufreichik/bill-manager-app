@@ -3,8 +3,6 @@ import {connect} from "react-redux";
 import {getTransactions, transactionGetById} from "../../redux/transactionActions";
 import {Button, IconButton} from "@material-ui/core";
 import {DeleteOutline, EditOutlined, Payment} from "@material-ui/icons";
-import {Link} from "react-router-dom";
-import moment from "moment";
 import MaterialTable from "material-table";
 
 

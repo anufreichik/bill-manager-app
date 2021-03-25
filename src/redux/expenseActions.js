@@ -7,7 +7,7 @@ export function getExpenses(partyId){
         axios({
             method: 'POST',
             headers: authHeader(),
-            url: `http://localhost:5000/expense/search`,
+            url: `${process.env.REACT_APP_API_URL}/expense/search`,
             data: {partyId,limit:10, page:1}
         })
             .then(
@@ -30,10 +30,10 @@ export function addExpense(expense) {
         axios({
             method: 'POST',
             headers: authHeader(),
-            url: `http://localhost:5000/expense`,
+            url: `${process.env.REACT_APP_API_URL}/expense`,
             data: expense
         })
-        //axios.post(`http://localhost:5000/expense`, expense)
+        //axios.post(`${process.env.REACT_APP_API_URL}/expense`, expense)
             .then(
                 (res) => dispatch(getExpenses(expense.partyId))
             )
@@ -54,7 +54,7 @@ export function expenseGetById(expenseId) {
         axios({
             method: 'GET',
             headers: authHeader(),
-            url: `http://localhost:5000/expense/${expenseId}`
+            url: `${process.env.REACT_APP_API_URL}/expense/${expenseId}`
         })
 
             .then(
@@ -80,7 +80,7 @@ export function updateExpenseById(expense) {
         axios({
             method: 'PATCH',
             headers: authHeader(),
-            url: `http://localhost:5000/expense/${expense._id}`,
+            url: `${process.env.REACT_APP_API_URL}/expense/${expense._id}`,
             data:expense
         })
 

@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Modal} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import {connect} from "react-redux";
 import {getExpenses} from "../../redux/expenseActions";
 import {get} from "lodash";
-import {useParams} from "react-router-dom";
 
 function TransactionForm(props) {
     const [transactionPurpose, setTransactionPurpose] = useState('');

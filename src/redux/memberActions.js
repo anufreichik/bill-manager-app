@@ -6,7 +6,7 @@ export function getMembers(partyId){
         axios({
             method: 'POST',
             headers: authHeader(),
-            url: `http://localhost:5000/member/search`,
+            url: `${process.env.REACT_APP_API_URL}/member/search`,
             data:{partyId,limit:10, page:1}
         })
             .then(
@@ -29,7 +29,7 @@ export function addMember(member) {
         axios({
             method: 'POST',
             headers: authHeader(),
-            url: `http://localhost:5000/member`,
+            url: `${process.env.REACT_APP_API_URL}/member`,
             data:member
         })
 
@@ -54,7 +54,7 @@ export function memberGetById(memberId) {
         axios({
             method: 'GET',
             headers: authHeader(),
-            url: `http://localhost:5000/member/${memberId}`
+            url: `${process.env.REACT_APP_API_URL}/member/${memberId}`
         })
 
             .then(
@@ -79,7 +79,7 @@ export function updateMemberById(member) {
         axios({
             method: 'PATCH',
             headers: authHeader(),
-            url: `http://localhost:5000/member/${member._id}`,
+            url: `${process.env.REACT_APP_API_URL}/member/${member._id}`,
             data:member
         })
 

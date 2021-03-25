@@ -6,7 +6,7 @@ export function getParties(){
         axios({
             method: 'GET',
             headers: authHeader(),
-            url: `http://localhost:5000/party`,
+            url: `${process.env.REACT_APP_API_URL}/party`,
         })
             .then(
                 (res) => {
@@ -30,10 +30,10 @@ export function addParty(party) {
         axios({
             method:'POST',
             headers: authHeader(),
-            url:`http://localhost:5000/party`,
+            url:`${process.env.REACT_APP_API_URL}/party`,
             data: party
         })
-        //axios.post(`http://localhost:5000/party`, party)
+        //axios.post(`${process.env.REACT_APP_API_URL}/party`, party)
             .then(
                 (res) => dispatch(getParties())
             )
@@ -55,7 +55,7 @@ export function partyGetById(partyId) {
         axios({
             method: 'GET',
             headers: authHeader(),
-            url: `http://localhost:5000/party/${partyId}`
+            url: `${process.env.REACT_APP_API_URL}/party/${partyId}`
         })
 
             .then(
@@ -81,7 +81,7 @@ export function updatePartyById(party) {
         axios({
             method: 'PATCH',
             headers: authHeader(),
-            url: `http://localhost:5000/party/${party._id}`,
+            url: `${process.env.REACT_APP_API_URL}/party/${party._id}`,
             data:party
         })
 

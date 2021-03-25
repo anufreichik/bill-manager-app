@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {FaPlus} from "react-icons/all";
 import {Button, Modal} from "react-bootstrap";
 import {get} from "lodash";
 

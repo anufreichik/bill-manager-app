@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {Money} from "@material-ui/icons";
 import {AiFillDollarCircle} from "react-icons/all";
 
 

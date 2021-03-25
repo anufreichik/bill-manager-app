@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import {Link, Route, Switch, useHistory, useRouteMatch} from "react-router-dom";
+import React, {useEffect} from 'react';
+import {Link, useHistory, useRouteMatch} from "react-router-dom";
 import {connect} from "react-redux";
-import {addParty, getParties, partyGetById} from "../../redux/partyActions";
+import { getParties, partyGetById} from "../../redux/partyActions";
 import moment from 'moment';
 import {Button, IconButton} from "@material-ui/core";
 import {DeleteOutline, EditOutlined, GroupAdd} from "@material-ui/icons";
 import MaterialTable from "material-table";
 
 function PartiesList(props) {
-    let history = useHistory();
+    //let history = useHistory();
     let match = useRouteMatch();
 
     useEffect(

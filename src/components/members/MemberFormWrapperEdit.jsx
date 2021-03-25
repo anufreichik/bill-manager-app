@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import MemberForm from "./MemberForm";
-import {memberGetById, updateMemberById} from "../../redux/memberActions";
+import { updateMemberById} from "../../redux/memberActions";
 import {connect} from "react-redux";
 
 function MemberFormWrapperEdit(props) {

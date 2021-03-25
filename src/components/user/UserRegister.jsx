@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {userCreate, userLogin} from "../../redux/userActions";
+import {userCreate} from "../../redux/userActions";
 import {connect} from "react-redux";
 import {useHistory} from "react-router-dom";
 
 function UserRegister(props) {
-    let history = useHistory();
+    //let history = useHistory();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
