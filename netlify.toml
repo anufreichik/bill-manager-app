@@ -1,7 +1,12 @@
 [build]
-  publish = "dist"
-  command = "npm install && CI= npm run build"
-
+#that's correct here publish you files in #root/project/dist
+publish = "dist/"
+#that one create folder "build" with all your stuff
+#in "root/project/dist/build"
+command = "npm install && CI= npm run build"
+#here should be your start command for the app smthng like #"npm start"
+command = "npm start"
+#NB you need to switch to your build directory before running start
 [[redirects]]
   from = "/*"
   to = "/index.html"
