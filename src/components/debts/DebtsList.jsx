@@ -4,11 +4,12 @@ import {getDebts} from "../../redux/debtActions";
 import {ArrowForward} from '@material-ui/icons';
 import MaterialTable from "material-table";
 
+
 function DebtsList(props) {
+
     useEffect(()=>{
         props.getDebts(props.partyId);
-        console.log(props.debtsList)
-    },[])
+    },[props.partyId])
 
     return (
         <div >
