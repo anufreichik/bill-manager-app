@@ -1,5 +1,5 @@
 [build]
-  publish = "dist/"
+  publish = "dist"
   command = "npm install && CI= npm run build"
 
 [[redirects]]
