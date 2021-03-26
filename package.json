@@ -35,7 +35,7 @@
     "start": "react-scripts start",
     "start:prod": "env-cmd .env.production react-scripts start",
     "start:dev": "env-cmd .env.development react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run react-scripts build",
     "build:prod": "env-cmd .env.production react-scripts build",
     "build:dev": "env-cmd .env.development react-scripts build",
     "test": "react-scripts test",
