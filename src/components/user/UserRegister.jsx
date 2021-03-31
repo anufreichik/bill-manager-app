@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {useHistory} from "react-router-dom";
 
 function UserRegister(props) {
-    //let history = useHistory();
+    let history = useHistory();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -17,11 +17,11 @@ function UserRegister(props) {
     function handleSubmit(event) {
         event.preventDefault();
         const userData = {email: email, password: password}
-        props.userRegister(userData);
+        props.userRegister(userData, history);
 
     }
     function handleCancel(){
-
+        history.push('/')
     }
 
     return (
@@ -69,7 +69,7 @@ function UserRegister(props) {
 
 const mapStateToProps = (state) => ({})
 const mapDispatchToProps = (dispatch) => ({
-    userRegister: (user) => dispatch(userCreate(user))
+    userRegister: (user, history) => dispatch(userCreate(user, history))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(UserRegister);
 

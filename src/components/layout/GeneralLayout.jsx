@@ -29,7 +29,7 @@ function GeneralLayout(props) {
                             color='red'/>Manager</strong>
                         </Link>
 
-                        <div class="collapse navbar-collapse">
+                        <div className="collapse navbar-collapse">
 
                             <ul className="navbar-nav  text-dark mt-1 mr-auto">
                                 <li className="nav-item">

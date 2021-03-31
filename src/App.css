@@ -17,7 +17,7 @@ body{
 }
 
 footer{
-  background-color: rgba(25,36,45);
+  background-color: rgba(25,36,45,1);
   font-size: 14px;
   color:#7b7e7f;
   padding-top:2.2rem;

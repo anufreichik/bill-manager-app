@@ -6,26 +6,29 @@ import {AiFillDollarCircle} from "react-icons/all";
 function Header(props) {
 
     return (
-        <header className='container'>
+        <div className='container'>
             <div className='row'>
+                <div className='col-12'>
                 <nav className='navbar navbar-expand'>
-                    <Link className="navbar-brand text-dark" to={`/landing`}><strong>Party<AiFillDollarCircle
-                        color='red'/>Manager</strong>
+                    <Link className="navbar-brand text-dark" to={`/landing`}><strong>Group<AiFillDollarCircle
+                        color='red'/>Billz</strong>
                     </Link>
-                    <div>
+                    <div className="collapse navbar-collapse">
                         <ul className="navbar-nav mr-auto text-dark mt-1">
                             <li className="nav-item">
-                                <a className="nav-link text-dark" href="#">Solution</a>
+                                <Link className='nav-link text-dark' to={`/solution`}>Solution</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-dark" href="#">Product</a>
+                                <Link className='nav-link text-dark' to={`/about`}>About</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-dark" href="#">Contact</a>
+                                <Link className='nav-link text-dark' to={`/contact`}>Contact</Link>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link text-dark" href="#">About Me</a>
-                            </li>
+
+
+                        </ul>
+                        <ul className="navbar-nav  text-dark mt-1">
+
                             <li className="nav-item">
                                 <Link className='nav-link' to={`/login`}>Sign In</Link>
                             </li>
@@ -33,16 +36,16 @@ function Header(props) {
                                 <Link className='btn btn-danger rounded-pill btn-lg' to={`/login/register`}>Try
                                     Free</Link>
                             </li>
-
                         </ul>
+
                     </div>
                 </nav>
-
+                </div>
 
             </div>
 
 
-        </header>
+        </div>
     );
 }
 

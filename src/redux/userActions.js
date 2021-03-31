@@ -31,8 +31,8 @@ export function userLogin(user, history){
             )
     }
 }
-export function userCreate(user) {
-    console.log('action add party axios')
+export function userCreate(user, history) {
+    console.log('action add user')
     return (dispatch) => {
         axios({
             method:'POST',
@@ -41,7 +41,11 @@ export function userCreate(user) {
             data: user
         })
             .then(
-                //(res) => dispatch(setUser())
+                (res) =>{
+                    history.push('/login');
+                }
+
+
             )
             .catch(
                 (err) => console.log(err, 'error')
