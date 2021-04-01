@@ -3,10 +3,11 @@ import {GitHub, Instagram, LinkedIn} from "@material-ui/icons";
 
 function Footer() {
     return (
+
             <footer className='mt-auto'>
                 <div className='container'>
                     <div className='row'>
-                        <div className="col-12 col-md-4 col-lg-3 d-flex  flex-column">
+                        <div className="col-sm-12 col-md-4 col-lg-3 d-flex flex-column">
                             <div>Party Bill Manager</div>
                             <div>Terms Of Service</div>
                             <div>Privacy Policy</div>
@@ -23,12 +24,12 @@ function Footer() {
                             </div>
 
                         </div>
-                        <div className="col-12 col-md-4 col-lg-3 d-flex flex-column">
+                        <div className="col-sm-12 col-md-4 col-lg-3 d-flex flex-column">
                             <div className='row'>
-                                <div className='col-6'>About</div>
-                                <div className='col-6'>Blog</div>
-                                <div className='col-6'>Contact</div>
-                                <div className='col-6'>Products</div>
+                                <div className='col-sm-12 col-6'>About</div>
+                                <div className='col-sm-12 col-6'>Blog</div>
+                                <div className='col-sm-12 col-6'>Contact</div>
+                                <div className='col-sm-12 col-6'>Products</div>
                             </div>
                         </div>
                     </div>

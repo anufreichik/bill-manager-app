@@ -1,19 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import {AiFillDollarCircle} from "react-icons/all";
 
 
 function Header(props) {
+    const [isNavCollapsed, setIsNavCollapsed] = useState(true);
 
+    const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
     return (
         <div className='container'>
             <div className='row'>
                 <div className='col-12'>
-                <nav className='navbar navbar-expand'>
+                <nav className='navbar navbar-expand-sm navbar-light bg-light'>
                     <Link className="navbar-brand text-dark" to={`/landing`}><strong>Group<AiFillDollarCircle
                         color='red'/>Billz</strong>
                     </Link>
-                    <div className="collapse navbar-collapse">
+                    <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarLandingMenu"
+                            aria-expanded={!isNavCollapsed ? true : false} aria-label="Toggle navigation" onClick={handleNavCollapse}>
+                        <span className="navbar-toggler-icon"/>
+                    </button>
+                    <div  className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`}  id="navbarLandingMenu">
                         <ul className="navbar-nav mr-auto text-dark mt-1">
                             <li className="nav-item">
                                 <Link className='nav-link text-dark' to={`/solution`}>Solution</Link>
@@ -28,7 +34,6 @@ function Header(props) {
 
                         </ul>
                         <ul className="navbar-nav  text-dark mt-1">
-
                             <li className="nav-item">
                                 <Link className='nav-link' to={`/login`}>Sign In</Link>
                             </li>

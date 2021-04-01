@@ -12,18 +12,18 @@ function Landing(props) {
             <main>
                 <div className='container' >
                     <div className='row'>
-                        <div className='col-6'>
+                        <div className='col-sm-12 col-md-6'>
                             <h4 className='mt-5'>Party...Bills...Manage...Party</h4>
                             <h1 className='mt-5 text-32 md:text-50 lg:text-74 font-bold text-center'>No pain managing
                                 party
                                 bills ever</h1>
                         </div>
-                        <div className='col-6'>
+                        <div className='col-sm-12 col-md-6'>
                             <div className='mt-5'><img src={landingImage} width='100%'  /></div>
                         </div>
                     </div>
                     <div className='row mt-5'>
-                        <div className='col-4'>
+                        <div className='col-sm-12 col-md-4'>
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">John Party</h5>
@@ -34,7 +34,7 @@ function Landing(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className='col-4'>
+                        <div className='col-md-4 col-sm-12'>
                             <div className='mt-5'>&nbsp;</div>
                             <div className="card mt-5">
                                 <div className="card-body">
@@ -46,7 +46,7 @@ function Landing(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className='col-4'>
+                        <div className='col-md-4 col-sm-12'>
                             <div className="card mt-3">
                                 <div className="card-body">
                                     <h5 className="card-title">My Story</h5>
