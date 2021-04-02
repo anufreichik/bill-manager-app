@@ -35,7 +35,7 @@ function TransactionsList(props) {
     return (
         <div>
             <div className="mt-3 mb-2 text-center">
-                <Button
+                <Button disableElevation
                     variant="contained"
                     color="secondary"
                     startIcon={<Payment/>}

@@ -4,12 +4,12 @@ import Footer from "./Footer";
 
 function About() {
     return (
-        <div>
+        <>
             <Header/>
             <main >
                 <div className='container' >
-                    <div className='row d-flex justify-content-center'>
-                        <div className='text-32 md:text-50 lg:text-74 font-bold text-center'>
+                    <div className='row'>
+                        <div className='text-32 md:text-50 lg:text-74 font-bold text-center mt-4'>
                             Passionate about helping customers <br/>manage bills after party
                         </div>
                         <h4 className='mt-5 text-center'>
@@ -19,7 +19,7 @@ function About() {
                 </div>
             </main>
             <Footer/>
-        </div>
+        </>
     );
 }
 

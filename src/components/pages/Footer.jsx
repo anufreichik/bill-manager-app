@@ -3,7 +3,6 @@ import {GitHub, Instagram, LinkedIn} from "@material-ui/icons";
 
 function Footer() {
     return (
-
             <footer className='mt-auto'>
                 <div className='container'>
                     <div className='row'>
@@ -35,7 +34,6 @@ function Footer() {
                     </div>
                 </div>
             </footer>
-
     );
 }
 

@@ -31,6 +31,7 @@ function MembersList(props) {
         <div>
             <div className="mt-3 mb-2 text-center">
                 <Button
+                    disableElevation
                 variant="contained"
                 color="secondary"
                 startIcon={<PersonAddIcon />}

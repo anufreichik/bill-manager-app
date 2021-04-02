@@ -15,7 +15,9 @@ body{
   position: absolute;
   z-index: -1;
 }
-
+.border-rounded{
+  border-radius: 10%;
+}
 footer{
   background-color: rgba(25,36,45,1);
   font-size: 14px;

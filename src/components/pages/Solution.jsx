@@ -4,7 +4,7 @@ import Footer from "./Footer";
 
 function Solution(props) {
     return (
-        <div>
+        <>
             <Header/>
             <main >
                 <div className='container' >
@@ -17,9 +17,10 @@ function Solution(props) {
                         </h4>
                     </div>
                 </div>
+
             </main>
             <Footer/>
-        </div>
+        </>
     );
 }
 

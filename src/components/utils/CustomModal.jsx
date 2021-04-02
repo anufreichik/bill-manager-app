@@ -36,7 +36,7 @@ const CustomModal = (props) => {
     const content = components[component] || null;
 
     return (
-        <Modal show={open} onHide={onCloseModal}>
+        <Modal show={open} onHide={onCloseModal} >
             <Modal.Header closeButton>
                 <Modal.Title>{title}</Modal.Title>
             </Modal.Header>

@@ -25,8 +25,8 @@ function GeneralLayout(props) {
                 <div className='row'>
                     <div className='col-12'>
                     <nav className='navbar navbar-expand'>
-                        <Link className="navbar-brand text-dark" to={`/landing`}><strong>Party<AiFillDollarCircle
-                            color='red'/>Manager</strong>
+                        <Link className="navbar-brand text-dark" to={`/landing`}><strong>Group<AiFillDollarCircle
+                            color='red'/>Billz</strong>
                         </Link>
 
                         <div className="collapse navbar-collapse">
@@ -70,7 +70,6 @@ function GeneralLayout(props) {
                         <Route path={`${match.path}/settings`}>
                             <div>Settings Component be here</div>
                         </Route>
-
                     </Switch>
                 </div>
             </main>

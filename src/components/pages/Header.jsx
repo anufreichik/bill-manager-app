@@ -30,8 +30,6 @@ function Header(props) {
                             <li className="nav-item">
                                 <Link className='nav-link text-dark' to={`/contact`}>Contact</Link>
                             </li>
-
-
                         </ul>
                         <ul className="navbar-nav  text-dark mt-1">
                             <li className="nav-item">

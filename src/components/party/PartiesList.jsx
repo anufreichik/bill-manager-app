@@ -39,7 +39,7 @@ function PartiesList(props) {
 
         <div className="container">
             <div className="mt-3 mb-2 text-center">
-                <Button
+                <Button disableElevation
                     variant="contained"
                     color="secondary"
                     startIcon={<GroupAdd />}
