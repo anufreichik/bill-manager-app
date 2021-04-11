@@ -29,7 +29,6 @@ function LoginLayout(props) {
                 {/*</div>*/}
             </div>
            </main>
-            <Footer/>
         </>
     );
 }

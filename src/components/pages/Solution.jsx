@@ -19,7 +19,7 @@ function Solution(props) {
                 </div>
 
             </main>
-            <Footer/>
+
         </>
     );
 }

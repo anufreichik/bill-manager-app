@@ -9,11 +9,10 @@ function Landing(props) {
     return (
         <>
             <Header/>
-
                 <div className='container'>
                     <div className='row'>
                         <div className='col-sm-12 col-md-6'>
-                            <h4 className='mt-5'>Party...Bills...Manage...</h4>
+
                             <h1 className='mt-5 text-32 md:text-50 lg:text-74 font-bold text-center'>No pain managing
                                 party
                                 bills ever</h1>
@@ -23,7 +22,7 @@ function Landing(props) {
                         </div>
                     </div>
                     <div className='row mt-5'>
-                        <div className='col-sm-12 col-md-4'>
+                        <div className='col-sm-12 col-md-4 landing-card'>
                             <div className="card m-1">
                                 <div className="card-body">
                                     <h5 className="card-title">John Party</h5>
@@ -34,7 +33,7 @@ function Landing(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className='col-md-4 col-sm-12'>
+                        <div className='col-md-4 col-sm-12 landing-card'>
                             <div className="card  m-1">
                                 <div className="card-body">
                                     <h5 className="card-title">Leon Bills</h5>
@@ -45,7 +44,7 @@ function Landing(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className='col-md-4 col-sm-12'>
+                        <div className='col-md-4 col-sm-12 landing-card'>
                             <div className="card  m-1">
                                 <div className="card-body">
                                     <h5 className="card-title">My Story</h5>
@@ -61,7 +60,7 @@ function Landing(props) {
                     </div>
                 </div>
 
-            <Footer/>
+
         </>
     );
 }

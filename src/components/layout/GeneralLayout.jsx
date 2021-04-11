@@ -20,7 +20,6 @@ function GeneralLayout(props) {
 
     return (
         <>
-
             <header className='container'>
                 <div className='row'>
                     <div className='col-12'>
@@ -58,7 +57,6 @@ function GeneralLayout(props) {
                 </div>
             </header>
             <CustomModal/>
-            <main>
                 <div className="container">
                     <Switch>
                         <Route path={`${match.path}/party`} exact>
@@ -72,8 +70,6 @@ function GeneralLayout(props) {
                         </Route>
                     </Switch>
                 </div>
-            </main>
-            <Footer/>
         </>
     );
 }

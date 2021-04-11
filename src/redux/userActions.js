@@ -23,7 +23,7 @@ export function userLogin(user, history){
             )
             .catch(
                 (err) => {
-                    console.log(err, err);
+                    console.log(err, "err");
                     dispatch({type:'AUTH_FAIL', payload:null});
                     history.push('/login');
                 }
@@ -48,7 +48,7 @@ export function userCreate(user, history) {
 
             )
             .catch(
-                (err) => console.log(err, err)
+                (err) => console.log(err, "err")
             )
     }
 }

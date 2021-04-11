@@ -34,7 +34,6 @@ function PartiesList(props) {
             width: '200',
         });
     }
-
     return (
 
         <div className="container">
@@ -56,7 +55,7 @@ function PartiesList(props) {
                 columns={[
                     { title: 'Party', field: 'partyName', render: rowData =>  <Link to={{pathname: `${match.path}/${rowData._id}`, state: {party: rowData}}}>{rowData.partyName}</Link> },
                     { title: 'Party Date', field: 'partyDate', render: rowData => <>{moment(rowData.partyDate).format('MM-DD-YYYY')}</> },
-                    { title: 'Members', field: '_id' , render: rowData =><span className="badge bg-secondary rounded-circle text-white ml-1">{0}</span>},
+                    { title: 'Members', field: 'numMembers' , render: rowData =><h4><span className="badge bg-primary rounded-circle text-white ml-1">{rowData.numMembers}</span></h4>},
                     {
                         field: '_id',
                         title: '',

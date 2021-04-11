@@ -9,11 +9,11 @@ function Header(props) {
     const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
     return (
         <div className='container'>
-            <div className='row'>
-                <div className='col-12'>
-                <nav className='navbar navbar-expand-sm navbar-light bg-light'>
-                    <Link className="navbar-brand text-dark" to={`/landing`}><strong>Group<AiFillDollarCircle
-                        color='red'/>Billz</strong>
+        <div className='row'>
+              <div className='col-12'>
+                <nav className='navbar navbar-expand-sm '>
+                    <Link className="navbar-brand text-dark" to={`/landing`}>
+                        <strong>Group<AiFillDollarCircle color='red'/>Billz</strong>
                     </Link>
                     <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarLandingMenu"
                             aria-expanded={!isNavCollapsed ? true : false} aria-label="Toggle navigation" onClick={handleNavCollapse}>
@@ -43,11 +43,8 @@ function Header(props) {
 
                     </div>
                 </nav>
-                </div>
-
-            </div>
-
-
+                 </div>
+             </div>
         </div>
     );
 }

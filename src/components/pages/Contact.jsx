@@ -15,7 +15,7 @@ function Contact(props) {
                     </div>
                 </div>
             </main>
-            <Footer/>
+
         </div>
     );
 }
