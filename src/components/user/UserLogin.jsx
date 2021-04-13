@@ -33,7 +33,7 @@ function UserLogin(props) {
                         <div className="card-block">
 
                             <form onSubmit={handleSubmit} className="sigin-form mt-3">
-                                <h3 >Login</h3>
+                                <h4 className='text-muted'>Login</h4>
                                 <div className="form-group">
                                     <input type="email" className="form-control" id="emailInput" placeholder="Email"
                                            value={email}

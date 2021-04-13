@@ -77,6 +77,10 @@ function ExpenseItemsList(props) {
                 data={props.expensesList}
                 options={{
                     //filtering: true,
+                    paging:true,
+                    emptyRowsWhenPaging: true,   //to make page size fix in case of less data rows
+                    pageSizeOptions:[10,20,40],    // rows selection options
+                    pageSize:10,
                     sorting: true,
                     search:true
                 }}

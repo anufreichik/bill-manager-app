@@ -80,6 +80,10 @@ function PartiesList(props) {
                 data={props.partiesList}
                 options={{
                     //filtering: true,
+                    paging:true,
+                    emptyRowsWhenPaging: true,   //to make page size fix in case of less data rows
+                    pageSizeOptions:[10,20],    // rows selection options
+                    pageSize:10,
                     sorting: true,
                     search:true
                 }}

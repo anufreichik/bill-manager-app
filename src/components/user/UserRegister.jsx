@@ -33,7 +33,7 @@ function UserRegister(props) {
                         <div className="card-block">
 
                             <form onSubmit={handleSubmit} className="sigin-form mt-3">
-                                <h5 className='text-muted'>Create Account</h5>
+                                <h4 className='text-muted'>Create Account</h4>
                                 <div className="form-group">
                                     <input type="email" className="form-control" id="emailInput" placeholder="Email"
                                            value={email}

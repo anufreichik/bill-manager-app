@@ -1,12 +1,14 @@
 * {
     box-sizing: border-box;
     font-family: Roboto;
+
 }
 .app_body {
     height: 100vh;
 }
 main{
     height: 100vh;
+    color: #1d1d1f;
 }
 .landing-body::after {
     content: "";
@@ -108,6 +110,12 @@ div.MuiPaper-elevation2 {
 
 }
 
+td.MuiTableCell-root {
+   padding:12px;
+}
+.MuiToolbar-root>.MuiToolbar-gutters{
+    padding-left:0;
+}
 
 #grad1 {
     height: 200px;

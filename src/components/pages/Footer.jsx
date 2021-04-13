@@ -23,7 +23,7 @@ function Footer() {
                 </div>
                 <div className="row">
                     <div className='col-12 d-flex justify-content-center mt-1  mb-1'>
-                        © 2021 Party Bill Manager.
+                        © 2021 Group Billz.
                         All Rights Reserved.
                     </div>
                 </div>
