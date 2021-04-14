@@ -15,6 +15,19 @@ const partyReducer = (state = initialState, action) => {
                 ...state,
                 partyInfo:{...action.payload}
             }
+        case 'PARTY_CLEAR':
+            return{
+                ...state,
+                partyInfo:{},
+                transactions:[],
+                transactionInfo:{},
+                members: [],
+                memberInfo:{},
+                expenses:[],
+                expenseInfo:{},
+                debts:[],
+                debtsSum:[],
+            }
         // case 'ADD_PARTY':
         //     return {
         //         ...state,

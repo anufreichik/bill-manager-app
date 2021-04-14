@@ -1,4 +1,5 @@
 import React from 'react';
+import './landingpages.css';
 import Header from "./Header";
 import Footer from "./Footer";
 

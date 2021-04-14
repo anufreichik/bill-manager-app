@@ -6,10 +6,13 @@ import {ArrowForward} from "@material-ui/icons";
 
 function DebtsListSummary({debtsList, getDebtsSum, partyId}) {
 
-    const [debts, setDebts]=useState([])
-    useEffect(async () => {
-        await getDebtsSum(partyId);
+    const [debts, setDebts]=useState([]);
 
+    useEffect(()=>{
+        getDebtsSum(partyId);
+    },[])
+
+    useEffect( () => {
         debtsList.forEach((el, i) => {
             let filtered = debtsList.filter(f => f.memberFrom[0]._id.toString() === el.memberTo[0]._id.toString() &&
                 f.memberTo[0]._id.toString() === el.memberFrom[0]._id.toString());
@@ -24,8 +27,9 @@ function DebtsListSummary({debtsList, getDebtsSum, partyId}) {
 
         setDebts(debtsList)
 
-    }, [])
+    }, [debtsList])
 
+console.log(debts, 'here my debts')
     return (
         <div>
             <MaterialTable
@@ -42,7 +46,7 @@ function DebtsListSummary({debtsList, getDebtsSum, partyId}) {
                 options={{
                     //filtering: true,
                     paging:true,
-                    emptyRowsWhenPaging: true,   //to make page size fix in case of less data rows
+                    emptyRowsWhenPaging: false,   //to make page size fix in case of less data rows
                     pageSizeOptions:[10,20,40],    // rows selection options
                     pageSize:10,
                     sorting: true,

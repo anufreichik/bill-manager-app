@@ -3,7 +3,7 @@ import {GitHub, Instagram, LinkedIn} from "@material-ui/icons";
 
 function Footer() {
     return (
-        <footer className="position-sticky">
+        <footer className="app_footer">
             <div className='container'>
                 <div className='row'>
                     <div className="col-12 d-flex  justify-content-between">

@@ -47,6 +47,13 @@ function TransactionForm(props) {
         setTransactionAmount(amount);
     }
 
+    const handleTransactionAmountChange=(e)=>{
+        let amount = e.target.value;
+        if (!amount || amount.match(/^\d{1,}(\.\d{0,4})?$/)) {
+           setTransactionAmount(amount);
+        }
+    }
+
     useEffect(
         () => {
             props.getExpenses(props.partyInfo._id);
@@ -95,10 +102,14 @@ function TransactionForm(props) {
             </div>
 
             <div className="col-auto">
+
                 <label htmlFor="amount">Amount</label>
                 <input type="text" className="form-control" id="amount" placeholder="Transaction Amount"
                        value={transactionAmount}
-                       onChange={(e) => setTransactionAmount(+e.target.value)}/>
+                       onChange={handleTransactionAmountChange}/>
+
+
+
             </div>
             {partyExpenses.length > 0 &&
             <>

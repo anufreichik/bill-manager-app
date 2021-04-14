@@ -84,8 +84,8 @@ function PartyView(props) {
                     <button className="btn btn-link active shadow-none" onClick={handleMembersClick}>Members</button>
                     {partyMembers.length>0 &&<button className="btn btn-link shadow-none" onClick={handleTransactionsClick}>Transactions</button>}
                     <button className="btn btn-link shadow-none" onClick={handleExpensesClick}>Expense Items</button>
-                    <button className="btn btn-link shadow-none" onClick={handleDebtsClick}>Debts Details</button>
-                    <button className="btn btn-link shadow-none" onClick={handleDebtsSummaryClick}>Debts Summary</button>
+                    {partyMembers.length>0 &&<button className="btn btn-link shadow-none" onClick={handleDebtsClick}>Debts Details</button>}
+                    {partyMembers.length>0 &&<button className="btn btn-link shadow-none" onClick={handleDebtsSummaryClick}>Debts Summary</button>}
                 </div>
             </div>
 

@@ -34,6 +34,10 @@ function PartiesList(props) {
             width: '200',
         });
     }
+
+    function clearPartyState(){
+        props.clearPartyState();
+    }
     return (
 
         <div className="container">
@@ -53,7 +57,7 @@ function PartiesList(props) {
                 title="My Parties"
 
                 columns={[
-                    { title: 'Party', field: 'partyName', render: rowData =>  <Link to={{pathname: `${match.path}/${rowData._id}`, state: {party: rowData}}}>{rowData.partyName}</Link> },
+                    { title: 'Party', field: 'partyName', render: rowData =>  <Link onClick={clearPartyState} to={{pathname: `${match.path}/${rowData._id}`, state: {party: rowData}}}>{rowData.partyName}</Link> },
                     { title: 'Party Date', field: 'partyDate', render: rowData => <>{moment(rowData.partyDate).format('MM-DD-YYYY')}</> },
                     { title: 'Members', field: 'numMembers' , render: rowData =><h4><span className="badge bg-primary rounded-circle text-white ml-1">{rowData.numMembers}</span></h4>},
                     {
@@ -81,7 +85,7 @@ function PartiesList(props) {
                 options={{
                     //filtering: true,
                     paging:true,
-                    emptyRowsWhenPaging: true,   //to make page size fix in case of less data rows
+                    emptyRowsWhenPaging: false,   //to make page size fix in case of less data rows
                     pageSizeOptions:[10,20],    // rows selection options
                     pageSize:10,
                     sorting: true,
@@ -98,6 +102,7 @@ const mapDispatchToProps = (dispatch) => ({
     getParties: () => dispatch(getParties()),
     partyGetById: (partyId) => dispatch(partyGetById(partyId)),
     open: (payload) => dispatch({type: 'MODAL_OPEN', payload}),
+    clearPartyState: () => dispatch({type: 'PARTY_CLEAR'}),
     //addParty:(newParty)=>dispatch({type:'ADD_PARTY', payload: newParty}),
 
 })

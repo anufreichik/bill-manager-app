@@ -1,4 +1,7 @@
-const initialDebts = { debts:[], debtsSum:[]}
+const initialDebts = {
+    debts:[],
+    debtsSum:[]
+}
 
 const expenseReducer = (state=initialDebts, action) => {
     switch (action.type) {

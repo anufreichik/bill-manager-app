@@ -9,7 +9,6 @@ import MaterialTable from "material-table";
 function ExpenseItemsList(props) {
 
     function handleEditOnClick(id) {
-        console.log(id)
         props.expenseGetById(id);
         props.open({
             title: 'Edit Expense',
@@ -51,7 +50,7 @@ function ExpenseItemsList(props) {
                     { title: 'Amount', field: 'expenseAmount' , render: rowData => <>${rowData.expenseAmount}</>},
                     { title: 'Tax', field: 'expenseTaxPercent' , render: rowData => <>{rowData.expenseTaxPercent}%</>},
                     { title: 'Tip', field: 'expenseTipPercent' , render: rowData => <>{rowData.expenseTipPercent}%</>},
-                    { title: 'Total', field: 'expenseTotal' , render: rowData => <>${rowData.expenseTipPercent}</>},
+                    { title: 'Total', field: 'expenseTotal' , render: rowData => <>${rowData.expenseTotal}</>},
 
                     {
                         field: '_id',
@@ -78,7 +77,7 @@ function ExpenseItemsList(props) {
                 options={{
                     //filtering: true,
                     paging:true,
-                    emptyRowsWhenPaging: true,   //to make page size fix in case of less data rows
+                    emptyRowsWhenPaging: false,   //to make page size fix in case of less data rows
                     pageSizeOptions:[10,20,40],    // rows selection options
                     pageSize:10,
                     sorting: true,

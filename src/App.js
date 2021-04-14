@@ -17,7 +17,7 @@ import Footer from "./components/pages/Footer";
 function App() {
     return (
         <div className="app_body" >
-            <main rol="main" >
+            <main role="main"  className="app_main">
                 <Switch>
                     <Route path="/landing">
                         <Landing/>

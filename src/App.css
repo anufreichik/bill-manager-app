@@ -1,31 +1,19 @@
 * {
     box-sizing: border-box;
     font-family: Roboto;
+}
 
-}
 .app_body {
-    height: 100vh;
+    /*height: 100vh;*/
 }
-main{
-    height: 100vh;
+
+.app_main{
+    min-height: 90vh;
     color: #1d1d1f;
 }
-.landing-body::after {
-    content: "";
-    background-image: url('components/pages/landing-bg.svg');
-    opacity: 0.5;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
-}
 
-.border-rounded {
-    border-radius: 10%;
-}
-footer{
+.app_footer{
+    position:relative;
     margin-top:auto;
     bottom: 0;
     width: 100vw;
@@ -34,25 +22,25 @@ footer{
     background-color: rgba(25, 36, 45, 1);
     color: #7b7e7f;
     padding: 2.2rem 0;
+    z-index: 9000;
 }
 
-.card-text {
-    font-family: "Segoe UI";
+/*.landing-body::after {*/
+/*    content: "";*/
+/*    background-image: url('components/pages/landing-bg.svg');*/
+/*    opacity: 0.5;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    bottom: 0;*/
+/*    right: 0;*/
+/*    position: absolute;*/
+/*    z-index: -1;*/
+/*}*/
+
+.border-rounded {
+    border-radius: 10%;
 }
 
-.landing-card > .card {
-    border: lightseagreen 1px solid;
-    background-color: #f5fdfd;
-    border-radius: 20px;
-}
-
-.font-bold {
-    font-width: 700;
-}
-
-.text-32 {
-    font-size: 2rem;
-}
 
 .navbar-nav > li {
     padding-left: 10px;
@@ -65,31 +53,6 @@ footer{
 
 .party_buttons > .btn{
     padding-left: 0;
-}
-body.sigin-body {
-    background-color: #e6f2ff;
-}
-
-.container.signin-container {
-    margin-top: 8%;
-}
-
-form.sigin-form {
-    max-width: 350px;
-    margin: auto;
-}
-
-button.signin-btn {
-    color: #ffffff;
-    width: 100%;
-    margin-bottom: 1.2rem;
-}
-
-a.create-new-account {
-    font-size: 1.2rem;
-    text-align: center;
-    display: block;
-    margin-top: 15px;
 }
 
 button.MuiButton-containedPrimary, button.MuiButton-containedPrimary:hover {
@@ -117,29 +80,14 @@ td.MuiTableCell-root {
     padding-left:0;
 }
 
-#grad1 {
-    height: 200px;
-    background-color: #cccccc;
-    background-image: linear-gradient(red, yellow);
-    opacity: 10%;
-}
+/*#grad1 {*/
+/*    height: 200px;*/
+/*    background-color: #cccccc;*/
+/*    background-image: linear-gradient(red, yellow);*/
+/*    opacity: 10%;*/
+/*}*/
 
 
-@media (min-width: 768px) {
-    .md\:text-50 {
-        font-size: 3.125rem;
-        line-height: 1.4;
-        letter-spacing: -.018em;
-    }
-}
-
-@media (min-width: 1024px) {
-    .lg\:text-74 {
-        font-size: 4.625rem;
-        line-height: 1.4;
-        letter-spacing: -.018em;
-    }
-}
 
 @keyframes App-logo-spin {
     from {
