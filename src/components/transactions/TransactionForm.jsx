@@ -6,6 +6,7 @@ import {get} from "lodash";
 
 function TransactionForm(props) {
     const [transactionPurpose, setTransactionPurpose] = useState('');
+    const [transactionVenue, setTransactionVenue] = useState('');
     const [transactionAmount, setTransactionAmount] = useState(0);
     const [paidForMembers, setPaidForMembers] = useState([]);
     const [whoPaid, setWhoPaid] = useState('');
@@ -17,6 +18,7 @@ function TransactionForm(props) {
     const handleSave = () => {
         props.onFinish({
             purpose: transactionPurpose,
+            venue:transactionVenue,
             memberWhoPaid: whoPaid,
             paidForMembers: paidForMembers,
             amount: transactionAmount,
@@ -85,6 +87,14 @@ function TransactionForm(props) {
                        value={transactionPurpose}
                        onChange={(e) => setTransactionPurpose(e.target.value)}/>
             </div>
+
+            <div className="col-auto">
+                <label htmlFor="venue">Venue</label>
+                <input type="text" className="form-control" id="venue" placeholder="Transaction Venue"
+                       value={transactionVenue}
+                       onChange={(e) => setTransactionVenue(e.target.value)}/>
+            </div>
+
 
             <div className="col-auto">
                 <label htmlFor="paid">Who Paid</label>

@@ -50,6 +50,7 @@ function TransactionsList(props) {
 
                 columns={[
                     {title: 'Name', field: 'purpose'},
+                    {title: 'Venue', field: 'venue'},
                     {title: 'Amount', field: 'amount', render: rowData => <>${rowData.amount}</>},
                     {title: 'Who Paid', field: 'memberWhoPaid.memberName'},
                     {

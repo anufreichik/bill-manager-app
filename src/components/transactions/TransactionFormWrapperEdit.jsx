@@ -5,10 +5,11 @@ import TransactionForm from "./TransactionForm";
 
 function TransactionFormWrapperEdit(props) {
 
-    const onFinish = ({purpose, memberWhoPaid, paidForMembers, amount}) => {
+    const onFinish = ({purpose, venue, memberWhoPaid, paidForMembers, amount}) => {
         const updatedTransaction = {
             _id: props.transactionInfo._id,
             purpose: purpose,
+            venue:venue,
             memberWhoPaid: memberWhoPaid,
             paidForMembers: paidForMembers,
             amount: amount,

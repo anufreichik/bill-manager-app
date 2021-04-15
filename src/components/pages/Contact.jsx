@@ -11,7 +11,7 @@ function Contact(props) {
                 <div className='container' >
                     <div className='row d-flex justify-content-center'>
                         <h1>
-                           contact@groupbillz.com
+                           anufreichik1@gmail.com
                         </h1>
                     </div>
                 </div>

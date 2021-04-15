@@ -11,10 +11,12 @@ function About() {
                 <div className='container' >
                     <div className='row'>
                         <div className='text-32 md:text-50 lg:text-74 font-bold text-center mt-4'>
-                            Passionate about helping customers <br/>manage bills after party
+                            Passionate about building awesome applications <br/>
                         </div>
-                        <h4 className='mt-5 text-center'>
-                            Built with the speed and breadth to empower marketers to harness their creativity, our customer engagement platform delivers relevant, cross-channel experiences at scale.
+                        <h4 className='mt-5 text-muted text-center'>
+                            I am a Software Engineer with many years of progressive experience. <br/>
+                            My career has allowed me to actively contribute to full life cycle development of software and solutions for large-scale enterprise applications. <br/>
+                            My work has centered around design, development, maintenance, and enhancement projects.<br/>
                         </h4>
                     </div>
                 </div>

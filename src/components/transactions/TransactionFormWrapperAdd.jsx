@@ -7,9 +7,10 @@ import TransactionForm from "./TransactionForm";
 function TransactionFormWrapperAdd(props) {
 
 
-    const onFinish = ({purpose, memberWhoPaid, paidForMembers, amount}) => {
+    const onFinish = ({purpose, venue,  memberWhoPaid, paidForMembers, amount}) => {
         const newTransaction = {
             purpose: purpose,
+            venue:venue,
             memberWhoPaid: memberWhoPaid,
             paidForMembers: paidForMembers,
             amount: amount,
