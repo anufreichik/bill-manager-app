@@ -65,6 +65,7 @@ function TransactionForm(props) {
     useEffect(() => {
         if (props.initialValues) {
             const purpose = get(props, 'initialValues.purpose', '');
+            const venue = get(props, 'initialValues.venue', '');
             const amount = get(props, 'initialValues.amount', 0);
             const memberWhoPaid = get(props, 'initialValues.memberWhoPaid._id', '');
             const paidForMembersList = get(props, 'initialValues.paidForMembers', []);
@@ -73,6 +74,7 @@ function TransactionForm(props) {
             setTransactionAmount(amount);
             setWhoPaid(memberWhoPaid);
             setPaidForMembers(paidForMembersList);
+            setTransactionVenue(venue);
         }
 
     }, [props.initialValues])
