@@ -10,13 +10,14 @@ import TransactionFormWrapperAdd from "../transactions/TransactionFormWrapperAdd
 import TransactionFormWrapperEdit from "../transactions/TransactionFormWrapperEdit";
 import ExpenseFormWrapperAdd from "../expenses/ExpenseFormWrapperAdd";
 import ExpenseFormWrapperEdit from "../expenses/ExpenseFormWrapperEdit";
+import TransactionModalDelete from "../transactions/TransactionModalDelete";
 
 const CustomModal = (props) => {
 
     const open = get(props, 'CustomModal.open', false);
     const component = get(props, 'CustomModal.component', '');
     const title = get(props, 'CustomModal.title', '');
-
+    const data= get(props, 'CustomModal.data', {});
 
     const components = {
         EditMember: <MemberFormWrapperEdit/>,
@@ -27,6 +28,7 @@ const CustomModal = (props) => {
         EditTransaction:<TransactionFormWrapperEdit/>,
         AddExpense:<ExpenseFormWrapperAdd/>,
         EditExpense:<ExpenseFormWrapperEdit/>,
+        DeleteTransaction:<TransactionModalDelete data={data}/>
     }
     const onCloseModal = () => {
         props.close();

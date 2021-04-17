@@ -11,7 +11,7 @@ function Header(props) {
         <div className='container'>
         <div className='row'>
               <div className='col-12'>
-                <nav className='navbar navbar-expand-sm '>
+                <nav className='navbar navbar-light navbar-expand-md'>
                     <Link className="navbar-brand text-dark" to={`/landing`}>
                         <strong>Group<AiFillDollarCircle color='red'/>Billz</strong>
                     </Link>

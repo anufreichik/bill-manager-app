@@ -99,3 +99,28 @@ export function updateTransactionById(transaction) {
             )
     }
 }
+
+
+export function deleteTransactionById(transactionId, partyId) {
+    return (dispatch) => {
+        axios({
+            method: 'DELETE',
+            headers: authHeader(),
+            url: `${process.env.REACT_APP_API_URL}/transaction/${transactionId}`
+        })
+
+            .then(
+                (res) => dispatch(getTransactions(partyId))
+            )
+            .catch(
+                (err) => {
+                    if (err.response.status === 401) {
+                        console.log('unauthorized, logging out ...');
+                        dispatch({type:'AUTH_FAIL', payload:null});
+                    }
+
+                }
+            )
+    }
+}
+

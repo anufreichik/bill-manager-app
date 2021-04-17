@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
-import {getTransactions, transactionGetById} from "../../redux/transactionActions";
+import {deleteTransactionById, getTransactions, transactionGetById} from "../../redux/transactionActions";
 import {Button, IconButton} from "@material-ui/core";
 import {DeleteOutline, EditOutlined, Payment} from "@material-ui/icons";
 import MaterialTable from "material-table";
@@ -16,6 +16,17 @@ function TransactionsList(props) {
             component: 'EditTransaction',
             width: '200',
         });
+    }
+
+    function handleDeleteOnClick(id){
+        props.open({
+            title: 'Delete Transaction',
+            component: 'DeleteTransaction',
+            width: '200',
+            data:{_id:id, partyId:props.partyId}
+        });
+
+       // props.deleteTransactionById(id, props.partyId);
     }
 
     function handleAddOnClick() {
@@ -81,7 +92,7 @@ function TransactionsList(props) {
                                 </IconButton>
 
                                 <IconButton aria-label="edit">
-                                    <DeleteOutline color="secondary" fontSize="small"/>
+                                    <DeleteOutline color="secondary" fontSize="small" onClick={()=>handleDeleteOnClick(rowData._id)}/>
                                 </IconButton>
                             </>)
                         }
@@ -110,6 +121,7 @@ const mapStateToProps = (state) => ({
 })
 const mapDispatchToProps = (dispatch) => ({
     getTransactions: (partyId) => dispatch(getTransactions(partyId)),
+   // deleteTransactionById:(transactionId, partyId)=>dispatch(deleteTransactionById(transactionId, partyId)),
     open: (payload) => dispatch({type: 'MODAL_OPEN', payload}),
     transactionGetById: (transactionId) => dispatch(transactionGetById(transactionId)),
 })
