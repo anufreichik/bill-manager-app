@@ -11,6 +11,7 @@ import TransactionFormWrapperEdit from "../transactions/TransactionFormWrapperEd
 import ExpenseFormWrapperAdd from "../expenses/ExpenseFormWrapperAdd";
 import ExpenseFormWrapperEdit from "../expenses/ExpenseFormWrapperEdit";
 import TransactionModalDelete from "../transactions/TransactionModalDelete";
+import PayDebtConfirmation from "../debts/PayDebtConfirmation";
 
 const CustomModal = (props) => {
 
@@ -28,7 +29,8 @@ const CustomModal = (props) => {
         EditTransaction:<TransactionFormWrapperEdit/>,
         AddExpense:<ExpenseFormWrapperAdd/>,
         EditExpense:<ExpenseFormWrapperEdit/>,
-        DeleteTransaction:<TransactionModalDelete data={data}/>
+        DeleteTransaction:<TransactionModalDelete data={data}/>,
+        PayDebtConfirmation:<PayDebtConfirmation data={data}/>
     }
     const onCloseModal = () => {
         props.close();

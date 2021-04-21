@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Link, useHistory, useRouteMatch} from "react-router-dom";
+import {Link,  useRouteMatch} from "react-router-dom";
 import {connect} from "react-redux";
 import { getParties, partyGetById} from "../../redux/partyActions";
 import moment from 'moment';
@@ -8,7 +8,6 @@ import {DeleteOutline, EditOutlined, GroupAdd} from "@material-ui/icons";
 import MaterialTable from "material-table";
 
 function PartiesList(props) {
-    //let history = useHistory();
     let match = useRouteMatch();
 
     useEffect(

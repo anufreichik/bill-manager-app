@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useLocation, useHistory} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import MembersList from "../members/MembersList";
 import TransactionsList from "../transactions/TransactionsList";
 import ExpenseItemsList from "../expenses/ExpenseItemsList";
@@ -10,11 +10,8 @@ import DebtsList from "../debts/DebtsList";
 import DebtsListSummary from "../debts/DebtsListSummary";
 
 function PartyView(props) {
-    //let {partyId} = useParams();
-    let history = useHistory();
     let data = useLocation();
     let party = data.state.party;
-    //let match = useRouteMatch();
 
     const[showMembers, setShowMembers]=useState(true);
     const[showTransactions, setShowTransactions]=useState(false);
@@ -24,10 +21,6 @@ function PartyView(props) {
 
     const partyMembers = props.membersList;
 
-
-    function handleGoBack(props) {
-        history.push("/party");
-    }
     const handleMembersClick=()=>{
         setShowMembers(true);
         setShowTransactions(false);

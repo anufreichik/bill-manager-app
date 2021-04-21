@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link, Route, Switch, useHistory, useRouteMatch} from "react-router-dom";
 import PartiesList from "../party/PartiesList";
 import PartyView from "../party/PartyView";
@@ -12,6 +12,11 @@ function GeneralLayout(props) {
     let history = useHistory();
     let match = useRouteMatch();
 
+    const [isNavCollapsed, setIsNavCollapsed] = useState(true);
+
+    const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
+
+
     function handleLogOut() {
         history.push('/login');
         localStorage.clear();
@@ -23,12 +28,15 @@ function GeneralLayout(props) {
             <header className='container'>
                 <div className='row'>
                     <div className='col-12'>
-                    <nav className='navbar navbar-expand'>
+                    <nav className='navbar navbar-light navbar-expand-md'>
                         <Link className="navbar-brand text-dark" to={`/landing`}><strong>Group<AiFillDollarCircle
                             color='red'/>Billz</strong>
                         </Link>
-
-                        <div className="collapse navbar-collapse">
+                        <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarLandingMenu"
+                                aria-expanded={!isNavCollapsed ? true : false} aria-label="Toggle navigation" onClick={handleNavCollapse}>
+                            <span className="navbar-toggler-icon"/>
+                        </button>
+                        <div  className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`}  id="navbarLandingMenu">
 
                             <ul className="navbar-nav  text-dark mt-1 mr-auto">
                                 <li className="nav-item">

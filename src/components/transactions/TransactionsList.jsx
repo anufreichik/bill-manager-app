@@ -25,8 +25,6 @@ function TransactionsList(props) {
             width: '200',
             data:{_id:id, partyId:props.partyId}
         });
-
-       // props.deleteTransactionById(id, props.partyId);
     }
 
     function handleAddOnClick() {
@@ -121,7 +119,6 @@ const mapStateToProps = (state) => ({
 })
 const mapDispatchToProps = (dispatch) => ({
     getTransactions: (partyId) => dispatch(getTransactions(partyId)),
-   // deleteTransactionById:(transactionId, partyId)=>dispatch(deleteTransactionById(transactionId, partyId)),
     open: (payload) => dispatch({type: 'MODAL_OPEN', payload}),
     transactionGetById: (transactionId) => dispatch(transactionGetById(transactionId)),
 })

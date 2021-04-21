@@ -2,11 +2,23 @@ import React, {useEffect, useState} from 'react';
 import {getDebtsSummary} from "../../redux/debtActions";
 import {connect} from "react-redux";
 import MaterialTable from "material-table";
-import {ArrowForward} from "@material-ui/icons";
+import {ArrowForward,  TransferWithinAStation} from "@material-ui/icons";
+import {IconButton} from "@material-ui/core";
 
-function DebtsListSummary({debtsList, getDebtsSum, partyId}) {
+function DebtsListSummary({debtsList, getDebtsSum, partyId,open}) {
 
     const [debts, setDebts]=useState([]);
+
+
+    function handlePayDebt(idFrom, idTo){
+        open({
+            title: 'Pay Debt',
+            component: 'PayDebtConfirmation',
+            width: '200',
+            data:{idFrom, idTo, partyId:partyId}
+        });
+    }
+
 
     useEffect(()=>{
         getDebtsSum(partyId);
@@ -41,6 +53,25 @@ console.log(debts, 'here my debts')
                     {title: 'Debt To', field: 'memberTo[0].memberName'},
                     {title: 'Debt Amount', field: 'debtSum', render: rowData => <>${rowData.debtSum.toFixed(2)}</>,},
 
+                    {
+                        field: '_id',
+                        title: '',
+                        filtering: false,
+                        sorting: false,
+                        cellStyle: {
+                            textAlign: "right"
+                        },
+                        render: rowData => {
+                            return (<>
+
+                                <IconButton aria-label="edit">
+                                    <TransferWithinAStation color="secondary" fontSize="small" onClick={()=>handlePayDebt(rowData.memberFrom[0]._id, rowData.memberTo[0]._id)}/>
+                                </IconButton>
+                            </>)
+                        }
+                    }
+
+
                 ]}
                 data={debts}
                 options={{
@@ -62,5 +93,6 @@ const mapStateToProps = (state) => ({
 })
 const mapDispatchToProps = (dispatch) => ({
     getDebtsSum: (partyId) => dispatch(getDebtsSummary(partyId)),
+    open: (payload) => dispatch({type: 'MODAL_OPEN', payload}),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(DebtsListSummary);
